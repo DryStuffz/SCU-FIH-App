@@ -1,4 +1,6 @@
+import 'package:app/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:app/test.dart';
 
 void main() => runApp(const FluentFocusApp());
 
@@ -24,31 +26,42 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
-  int currentPage = 0;
+  int indexpage = 0;
+  static const List<Widget> indexPageOptions = <Widget>[
+    Test(),
+    HomePage(),
+    Text(
+      'Index 2: School',
+    ),
+  ];
+
+  void tappedPage(int index) {
+    setState(() {
+      indexpage = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Fluent Focus'),
       ),
-      floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            debugPrint('Floating Action Button');
-          },
-          child: const Icon(Icons.book_online_rounded)),
-      bottomNavigationBar: NavigationBar(
-        destinations:const [
-          NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-          NavigationDestination(icon: Icon(Icons.search), label: 'Search'),
-        
+      body: Center(
+        child: indexPageOptions.elementAt(indexpage),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.history), label: 'History'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings), label: 'Settings'),
         ],
-        onDestinationSelected:(int index){
-          setState(() {
-            currentPage = index;
-          });
-          
-        } ,
-        selectedIndex: currentPage,
+        currentIndex: indexpage,
+        selectedItemColor: const Color(0xFF2E2E50),
+        backgroundColor: const Color(0xFFF8F7F7),
+        onTap: tappedPage,
+
       ),
     );
   }
