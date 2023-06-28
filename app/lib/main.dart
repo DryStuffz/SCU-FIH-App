@@ -1,4 +1,5 @@
 import 'package:app/home_page.dart';
+import 'package:app/screens/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:app/test.dart';
 import 'package:app/settings.dart';
@@ -14,7 +15,7 @@ class FluentFocusApp extends StatelessWidget {
       debugShowCheckedModeBanner: false, //remove debugger flag
       theme: ThemeData(primarySwatch: Colors.green //appbar theme
           ),
-      home: const RootPage(),
+      home: const SplashScreen(),
     );
   }
 }

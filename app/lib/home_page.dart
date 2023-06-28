@@ -26,13 +26,11 @@ class HomePage extends StatelessWidget {
           fixedSize: Size(0.9 * width, 0.3 * height),
         ),
         child: Stack(children: [
-          Image.asset(
-            'assets/images/image.png',
-          ),
+          
           Container(
               height: 30,
               width: double.infinity,
-              color: Colors.grey,
+
               padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
               child: const Text(
                 'Daily Problem',

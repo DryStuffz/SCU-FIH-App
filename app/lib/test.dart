@@ -16,7 +16,7 @@ class _TestState extends State<Test> {
         ),
         body: Column(
           children: [
-            Image.asset('assets/images/image.png'),
+            
             const SizedBox(height: 10),
             const Divider(color: Colors.red),
             Container(
