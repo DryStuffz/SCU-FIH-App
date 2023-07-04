@@ -2,6 +2,7 @@ import 'package:app/Test.dart';
 import 'package:app/daily_problem.dart';
 import 'package:flutter/material.dart';
 import 'package:app/level1.dart';
+import 'package:app/quizzes/quiz_root.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -42,7 +43,7 @@ class HomePage extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (BuildContext context) {
-                return const Level1();
+                return const QuizRoot();
               }),
             );
           },
@@ -55,7 +56,7 @@ class HomePage extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (BuildContext context) {
-                return const Level1();
+                return const QuizRoot();
               }),
             );
           },
