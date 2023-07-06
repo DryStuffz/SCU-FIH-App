@@ -1,3 +1,4 @@
+import 'package:app/screens/splash_screen/help_page.dart';
 import 'package:flutter/material.dart';
 
 class SettingsDrawer extends StatefulWidget {
@@ -77,10 +78,10 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
             leading: const Icon(Icons.help),
             title: const Text('Help'),
             onTap: () {
-              // Update the state of the app
-              // ...
-              // Then close the drawer
-              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const HelpPage()),
+              );
             },
           ),
         ],
