@@ -1,10 +1,17 @@
+import 'package:app/db_connect.dart';
 import 'package:app/home_page.dart';
+import 'package:app/quizzes/question_model.dart';
 import 'package:app/screens/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:app/test.dart';
 import 'package:app/settings.dart';
 
-void main() => runApp(const FluentFocusApp());
+
+void main() {
+  var db = DBconnect();
+  db.fetchQuestions();
+   runApp(const FluentFocusApp());
+}
 
 class FluentFocusApp extends StatelessWidget {
   const FluentFocusApp({super.key});
