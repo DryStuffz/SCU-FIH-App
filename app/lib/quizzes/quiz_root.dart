@@ -14,8 +14,7 @@ class QuizRoot extends StatefulWidget {
   State<QuizRoot> createState() => _QuizRootState();
 }
 
-class _QuizRootState extends State<QuizRoot> with 
-SingleTickerProviderStateMixin{
+class _QuizRootState extends State<QuizRoot>{
   //List of question to add to the quiz
   List<Question> questions = [
     Question(id: '101', title: 'Click on the second option', options: {
