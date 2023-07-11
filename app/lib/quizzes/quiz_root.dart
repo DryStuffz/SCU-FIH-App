@@ -16,32 +16,7 @@ class QuizRoot extends StatefulWidget {
 
 class _QuizRootState extends State<QuizRoot>{
   //List of question to add to the quiz
-  List<Question> questions = [
-    Question(id: '101', title: 'Click on the second option', options: {
-      'First block': false,
-      'Second Block': true,
-      'Third block': false,
-      'Fourth block': false,
-    }),
-    Question(id: '101', title: 'Click on the Third option', options: {
-      'First block': false,
-      'Second Block': false,
-      'Third block': true,
-      'Fourth block': false,
-    }),
-    Question(id: '101', title: 'Click on the Fourth option', options: {
-      'First block': false,
-      'Second Block': false,
-      'Third block': false,
-      'Fourth block': true,
-    }),
-    Question(id: '101', title: 'Click on the second option', options: {
-      'First block': false,
-      'Second Block': true,
-      'Third block': false,
-      'Fourth block': false,
-    })
-  ];
+  List<Question> questions = getQuestions();
   int questionIndex = 0; //index to loop through questions
   bool isPressed = false;
 
@@ -130,26 +105,8 @@ class _QuizRootState extends State<QuizRoot>{
                   const SizedBox(
                     height: 25.0,
                   ),
-                  for (int i = 0;
-                      i < questions[questionIndex].options.length;
-                      i++)
-                    GestureDetector(
-                      onTap: () => updateOption(
-                          questions[questionIndex].options.values.toList()[i]),
-                      child: OptionCard(
-                        option:
-                            questions[questionIndex].options.keys.toList()[i],
-                        color: isPressed
-                            ? (questions[questionIndex]
-                                        .options
-                                        .values
-                                        .toList()[i] ==
-                                    true
-                                ? correct
-                                : incorrect)
-                            : netral,
-                      ),
-                    ),
+                  //add options here
+                    
                 ],
               )),
           QuestionCard(question: questions[questionIndex].title),
@@ -160,9 +117,12 @@ class _QuizRootState extends State<QuizRoot>{
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
         child: NextButton(
           nextQuestion: nextQuestion,
+          isPressed: isPressed,
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
+  
+
 }

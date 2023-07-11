@@ -102,3 +102,7 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+fonts:
+  - family: yourFont
+    fonts:
+      - asset: assets/fonts/Inter-VariableFont_slnt,wght.ttf

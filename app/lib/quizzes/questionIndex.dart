@@ -75,6 +75,7 @@ class AnimationBar extends StatelessWidget {
     return TweenAnimationBuilder(
   tween: Tween<double>(begin: 0, end: endvalue),
   duration: const Duration(milliseconds: 500),
+  curve:Curves.fastOutSlowIn ,
   builder: (context, endvalue, _){
     return CustomPaint(
                 painter: ArcProgressPainter(

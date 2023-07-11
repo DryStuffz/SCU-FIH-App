@@ -5,6 +5,7 @@ class Question{
   final String title; //question
 
   final Map<String, bool> options; //will be mapped like this: {'1.' : False, '2' : False, '3' : True, '4' : False}
+  final bool isTapped = false;
   
   Question({
     required this.id,
