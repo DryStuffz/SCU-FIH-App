@@ -1,11 +1,18 @@
 import "package:app/constants/colors.dart";
+import "package:app/quizzes/question_model.dart";
 import "package:flutter/material.dart";
 
-class OptionCard extends StatelessWidget {
+// ignore: must_be_immutable
+class OptionCard extends StatefulWidget {
   const OptionCard({super.key, required this.option, required this.color});
+
   final String option;
   final Color color;
 
+  @override
+  State<OptionCard> createState() => _OptionCardState();
+}
+class _OptionCardState extends State<OptionCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -15,37 +22,22 @@ class OptionCard extends StatelessWidget {
               color: grey,
               width: 2.0,
             )),
-        margin: const EdgeInsets.symmetric(vertical: 7.0),
-        color: color,
+        color: widget.color,
         child: ListTile(
           title: Text(
-            option,
+            widget.option,
             style: const TextStyle(fontSize: 22.0),
           ),
         ));
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 class QuestionCard extends StatelessWidget {
-  const QuestionCard(
-      {super.key,
-      required this.question,
-});
+  const QuestionCard({
+    super.key,
+    required this.question,
+  });
   final String question;
-
 
   @override
   Widget build(BuildContext context) {
@@ -79,4 +71,5 @@ class QuestionCard extends StatelessWidget {
     );
   }
 }
+
 

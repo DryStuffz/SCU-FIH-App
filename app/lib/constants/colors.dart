@@ -7,3 +7,4 @@ const Color lightGrey = Color(0xFFE7E7E7);
 const Color correct = Color(0xFF32AB58);
 const Color incorrect = Color(0xFFAB3232);
 const Color netral = Color(0xFFF8F7F7);
+const Color selected = Color(0xFFC1BBBA);
