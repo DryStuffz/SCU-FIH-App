@@ -1,9 +1,7 @@
 import 'package:app/constants/test_strings.dart';
-import 'package:app/quizzes/next_button.dart';
 import 'package:app/quizzes/optionCard.dart';
 import 'package:app/quizzes/questionIndex.dart';
 import 'package:app/quizzes/question_model.dart';
-import 'package:app/quizzes/question_widget.dart';
 import 'package:app/quizzes/result_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:app/constants/colors.dart';
