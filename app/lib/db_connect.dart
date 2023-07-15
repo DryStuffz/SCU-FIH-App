@@ -9,7 +9,7 @@ class DBconnect {
     http.post(url,
         body: json.encode({
           'title': question.title,
-          'options': question.options,
+          'options': question.answers,
         }));
   }
 
@@ -19,7 +19,7 @@ class DBconnect {
 
       data.forEach((key, value) {
         var newQuestion =
-            Question(id: key, title: value['title'], options: value['options']);
+            Question(title: value['title'], answers: value['options']);
       });
       print(data);
     });

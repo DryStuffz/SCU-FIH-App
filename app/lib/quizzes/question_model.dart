@@ -1,22 +1,160 @@
+import "package:app/constants/colors.dart";
+import "package:flutter/material.dart";
+
 //All questions in our application will be modeled as a class
 class Question{
   //unique identifier for each questio
-  final String id;
-  final String title; //question
 
-  final Map<String, bool> options; //will be mapped like this: {'1.' : False, '2' : False, '3' : True, '4' : False}
-  final bool isTapped = false;
+  final String title; //question
+  final List<Answer> answers;
+  List<bool> alredlySelected = [];
+  List<Color> colorIndex = [];
   
   Question({
-    required this.id,
     required this.title,
-    required this.options,
+    required this.answers,
+
   });
+
+ 
+
 
   //operator overloading(question will print to console when calling this function)
   @override
   String toString() {
-    // TODO: implement toString
-    return 'Question(id: $id, title: $title, options: $options)';
+    return 'Question(title: $title, options: $answers, colors: $colorIndex, sel: $alredlySelected)';
   }
+
+  void clearAll(){
+    colorIndex = [];
+    alredlySelected = [];
+  }
+
+  void clearalreadlyUsed(){
+    alredlySelected = [];
+  }
+
+
+  void setDefaultColors(){
+    print('DEFAULT CALLED');
+    colorIndex = List.filled(answers.length, netral, growable: false);
+  }
+
+  List<Answer> getAlreadlySelected(){
+    return answers;
+  }
+
+ void setAlreadlySelectedIndex(int i, bool val){
+  if(alredlySelected.length != answers.length){
+      alredlySelected = List.filled(answers.length, false, growable: false);
+    }
+  else if(alredlySelected == [] || i >= alredlySelected.length){
+     print('INDEX ERROR');
+  }
+  alredlySelected[i] = val;
+
+ }
+  bool getAlreadlySelectedIndex(int i){
+    if(alredlySelected.length != answers.length){
+      alredlySelected = List.filled(answers.length, false, growable: false);
+    }
+    else if(alredlySelected == [] || i >= alredlySelected.length){
+      return false;
+    }
+    return alredlySelected[i];
+  }
+
+  Color getColorIndex(int i){
+    if(colorIndex.length != answers.length){
+      setDefaultColors();
+    }
+    else if(i >= colorIndex.length){
+      return netral;
+    }
+
+    return colorIndex[i];
+  }
+
+
+  List<Color> getColorList(){
+    if(colorIndex.length != answers.length){
+      setDefaultColors();
+    }
+    return colorIndex;
+  }
+
+  List<String> getTitles(){
+    List<String> titles = [];
+    for(int i = 0; i < answers.length; i++){
+      titles.add(answers[i].option);
+    }
+
+    return titles;
+  }
+
+  List<bool> getValues(){
+    List<bool> vals = [];
+    for(int i = 0; i < answers.length; i++){
+      vals.add(answers[i].isCorrect);
+    }
+
+    return vals;
+  }
+
+  void setColorIndex(int i, Color c){
+    if(colorIndex.length != answers.length){
+      setDefaultColors();
+    }
+    colorIndex[i] = c;
+  }
+}
+
+class Answer{
+  final String option;
+  final bool isCorrect;
+  Answer({required this.option, required this.isCorrect});
+
+  @override
+  String toString() {
+    // TODO: implement toString
+    return 'Answer(option: $option, value: $isCorrect)';
+  }
+}
+
+
+class Quiz{
+  final String quizName;
+  List<Question> questions = [];
+
+
+  @override
+  String toString() {
+    // TODO: implement toString
+    return 'Quiz(QuizName: $quizName, Questions: $questions)';
+  }
+
+  Quiz({
+    required this.quizName,
+  });
+
+  void addQuestion(Question quest){
+    questions.add(quest);
+  }
+
+  void setQuestions(List<Question> quests){
+    questions = quests;
+  }
+
+  List<Question> getQuestions(){
+    return questions;
+  }
+
+  Question getQuestionIndex(int i){
+    if(questions == [] || i >= questions.length){
+      return Question(title: "INDEX Error", answers: []);
+    }
+
+    return questions[i];
+  }
+
 }

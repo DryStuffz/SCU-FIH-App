@@ -43,7 +43,7 @@ class HomePage extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (BuildContext context) {
-                return const QuizRoot();
+                return const  QuizRoot(quizName: 'level1',);
               }),
             );
           },
@@ -56,7 +56,7 @@ class HomePage extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (BuildContext context) {
-                return const QuizRoot();
+                return  const QuizRoot(quizName: 'level2',);
               }),
             );
           },
