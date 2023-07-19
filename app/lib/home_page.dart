@@ -1,14 +1,23 @@
 import 'package:app/Test.dart';
 import 'package:app/daily_problem.dart';
+import 'package:app/dataBases/db_connect.dart';
+import 'package:app/dataBases/localDB.dart';
+import 'package:app/quizzes/question_model.dart';
 import 'package:flutter/material.dart';
 import 'package:app/level1.dart';
 import 'package:app/quizzes/quiz_root.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
+  
 
   @override
   Widget build(BuildContext context) {
+    Future<Quiz> dq = getFirebaseData();
     double height =
         MediaQuery.of(context).size.height; //get the height of the screen
     double width =
@@ -18,7 +27,7 @@ class HomePage extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(builder: (BuildContext context) {
-              return const DailyProblem();
+              return  QuizRoot(quiz: dq, saveData: true,);
             }),
           );
         },
@@ -43,7 +52,7 @@ class HomePage extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (BuildContext context) {
-                return const  QuizRoot(quizName: 'level1',);
+                return   QuizRoot(quiz: getQuizzes('level1'), saveData: false,);
               }),
             );
           },
@@ -56,7 +65,7 @@ class HomePage extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (BuildContext context) {
-                return  const QuizRoot(quizName: 'level2',);
+                return  QuizRoot(quiz: getQuizzes('level2'), saveData:  false,);
               }),
             );
           },

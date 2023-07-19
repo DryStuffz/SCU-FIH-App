@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "150862305798",
+    "project_id": "fluentfocus-27aad",
+    "storage_bucket": "fluentfocus-27aad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:150862305798:android:bbd557b870dfc8df500187",
+        "android_client_info": {
+          "package_name": "com.fluentfocus.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "150862305798-jga5q9k84t46upojnsuh6fj2t1qmm9he.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjdAGY1Lf4JeEp25aLRe3CmzFAzUj2TTk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "150862305798-jga5q9k84t46upojnsuh6fj2t1qmm9he.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "150862305798-66b3lac9kjtoar2mm3f9fqv0d0qfvh94.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,22 +1,273 @@
 {
   "level1": [
     {
-      "title": "Click on the second option",
+      "title": "What is the correct greeting to use when meeting someone for the first time?",
       "options": [
-        {"first block": false},
-        {"second Block": true},
-        {"Third Block": false},
-        {"fourth Block": false}
-
+        {"Goodbye": false},
+        {"Thank you": false},
+        {"Hello": true},
+        {"Sorry": false}
       ]
     },
     {
-      "title": "What is 2 + 2",
+      "title": "Who is the person that gives birth?",
       "options": [
-        {"4": true},
-        {"7": false},
-        {"34": false},
-        {"9k": false}
+        {"Sister": false},
+        {"Father": false},
+        {"Mother": true},
+        {"Friend": false}
+      ]
+    },
+    {
+      "title": "Choose the correct past tense form of the verb 'to eat':",
+      "options": [
+        {"Eaten": false},
+        {"Eat": false},
+        {"Ate": true},
+        {"Eating": false}
+      ]
+    },
+    {
+      "title": "Which place do you live in?",
+      "options": [
+        {"School": false},
+        {"House": true},
+        {"Garden": false},
+        {"Park": false}
+      ]
+    },
+    {
+      "title": "What is the correct future tense form of the verb 'to go'?",
+      "options": [
+        {"Went": false},
+        {"Going": false},
+        {"Gone": false},
+        {"Will go": true}
+      ]
+    },
+    {
+      "title": "Choose the correct present tense form of the verb 'to play':",
+      "options": [
+        {"Played": false},
+        {"Playing": true},
+        {"Plays": false},
+        {"Play": false}
+      ]
+    },
+    {
+      "title": "What is the correct greeting to use when saying goodbye?",
+      "options": [
+        {"Good morning": false},
+        {"Goodbye": true},
+        {"Thank you": false},
+        {"Hello": false}
+      ]
+    },
+    {
+      "title": "Which word means a male sibling?",
+      "options": [
+        {"Sister": false},
+        {"Brother": true},
+        {"Mother": false},
+        {"Friend": false}
+      ]
+    },
+    {
+      "title": "Choose the correct future tense form of the verb 'to see':",
+      "options": [
+        {"Saw": false},
+        {"Seeing": false},
+        {"Seen": false},
+        {"Will see": true}
+      ]
+    },
+    {
+      "title": "Fill in the blank: 'I wrote a ____.'",
+      "options": [
+        {"Book": true},
+        {"Movie": false},
+        {"Video": false},
+        {"Food": false}
+      ]
+    },
+    {
+      "title": "What is the opposite of 'hot'?",
+      "options": [
+        {"Cold": true},
+        {"Big": false},
+        {"Fast": false},
+        {"Bright": false}
+      ]
+    },
+    {
+      "title": "What is the opposite of 'big'?",
+      "options": [
+        {"Small": true},
+        {"Tall": false},
+        {"Fast": false},
+        {"Wide": false}
+      ]
+    },
+    {
+      "title": "How do you say 'thank you' in English?",
+      "options": [
+        {"Help me": false},
+        {"Screw you": false},
+        {"Sorry": false},
+        {"Thank you": true}
+      ]
+    },
+    {
+      "title": "How do you say 'sorry' in English?",
+      "options": [
+        {"No thanks": false},
+        {"Please": false},
+        {"Sorry": true},
+        {"Thank you": false}
+      ]
+    },
+    {
+      "title": "Fill in the blank: 'I ____ a student.'",
+      "options": [
+        {"Am": true},
+        {"Is": false},
+        {"Are": false},
+        {"Be": false}
+      ]
+    },
+    {
+      "title": "What color is the sky?",
+      "options": [
+        {"Blue": true},
+        {"Chair": false},
+        {"Run": false},
+        {"Two": false}
+      ]
+    },
+    {
+      "title": "Which word rhymes with 'cat'?",
+      "options": [
+        {"Hat": true},
+        {"Dog": false},
+        {"Car": false},
+        {"Bat": false}
+      ]
+    },
+    {
+      "title": "What is the opposite of 'happy'?",
+      "options": [
+        {"Sad": true},
+        {"Tired": false},
+        {"Angry": false},
+        {"Excited": false}
+      ]
+    },
+    {
+      "title": "What is the opposite of 'cold'?",
+      "options": [
+        {"Hot": true},
+        {"Warm": false},
+        {"Cool": false},
+        {"Frozen": false}
+      ]
+    },
+    {
+      "title": "Which word means 'goodbye'?",
+      "options": [
+        {"Hello": false},
+        {"Bye": true},
+        {"Howdy": false},
+        {"Hey": false}
+      ]
+    },
+    {
+      "title": "How do you say 'please' in English?",
+      "options": [
+        {"Peas": false},
+        {"Freeze": false},
+        {"Appease": false},
+        {"Please": true}
+      ]
+    },
+    {
+      "title": "Choose the correct shape:",
+      "options": [
+        {"Circle": true},
+        {"Dog": false},
+        {"Happy": false},
+        {"Three": false}
+      ]
+    },
+    {
+      "title": "Which word rhymes with 'hat'?",
+      "options": [
+        {"Rat": true},
+        {"Car": false},
+        {"Sun": false},
+        {"Bat": false}
+      ]
+    },
+    {
+      "title": "Fill in the blank: 'We _____ to school every day.'",
+      "options": [
+        {"walk": true},
+        {"eat": false},
+        {"fall": false},
+        {"sleep": false}
+      ]
+    },
+    {
+      "title": "Fill in the blank: 'They ____ my parents.'",
+      "options": [
+        {"are": true},
+        {"am": false},
+        {"is": false},
+        {"be": false}
+      ]
+    },
+    {
+      "title": "Fill in the blank: 'They ____ a car.'",
+      "options": [
+        {"drive": true},
+        {"fly": false},
+        {"sleep": false},
+        {"walk": false}
+      ]
+    },
+    {
+      "title": "What color is grass?",
+      "options": [
+        {"Green": true},
+        {"Yellow": false},
+        {"Black": false},
+        {"Blue": false}
+      ]
+    },
+    {
+      "title": "Fill in the blank: 'My mother ____ a nurse.'",
+      "options": [
+        {"is": true},
+        {"am": false},
+        {"are": false},
+        {"be": false}
+      ]
+    },
+    {
+      "title": "Fill in the blank: 'He ____ a cat.'",
+      "options": [
+        {"has": false},
+        {"have": false},
+        {"having": false},
+        {"had": true}
+      ]
+    },
+    {
+      "title": "Fill in the blank: 'My grandparents are ___ than me.'",
+      "options": [
+        {"Older": true},
+        {"Younger": false},
+        {"Newer": false},
+        {"Childish": false}
       ]
     }
   ],

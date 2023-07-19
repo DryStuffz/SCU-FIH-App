@@ -1,3 +1,4 @@
+import 'package:app/quizzes/addQuestions/addQuestions.dart';
 import 'package:app/screens/splash_screen/help_page.dart';
 import 'package:flutter/material.dart';
 
@@ -84,6 +85,16 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
               );
             },
           ),
+          ListTile(
+            leading: const Icon(Icons.add),
+            title: const Text('ADD QUESTIONS'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const  addQuestion()),
+              );
+            },
+          )
         ],
       ),
     );

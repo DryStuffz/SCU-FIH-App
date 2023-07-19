@@ -26,7 +26,7 @@ class _OptionCardState extends State<OptionCard> {
         child: ListTile(
           title: Text(
             widget.option,
-            style: const TextStyle(fontSize: 22.0),
+            style: const TextStyle(fontSize: 18.0, fontFamily: 'inter'),
           ),
         ));
   }
@@ -61,11 +61,15 @@ class QuestionCard extends StatelessWidget {
           ),
         ],
       ),
-      child: Align(
-        alignment: Alignment.center,
-        child: Text(
-          question,
-          textAlign: TextAlign.center,
+      child: Padding(
+        padding:  EdgeInsets.symmetric(horizontal: width *0.03),
+        child: Align(
+          alignment: Alignment.center, 
+          child: Text(
+            question,
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontFamily: 'inter', fontSize: 16),
+          ),
         ),
       ),
     );

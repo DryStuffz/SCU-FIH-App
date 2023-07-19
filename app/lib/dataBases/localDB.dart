@@ -55,10 +55,7 @@ Future<Quiz> getQuizzes(String quizName) async{
      quiz.addQuestion(tempQuest);
      
   } 
-  //print(questions);
-  //print('sdsdsdsds');
-  //print(quiz);
-  //print('\n\n\n');
+
   return quiz;
 
 }

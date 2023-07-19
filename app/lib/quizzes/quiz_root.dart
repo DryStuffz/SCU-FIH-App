@@ -1,5 +1,6 @@
 import 'package:app/constants/test_strings.dart';
-import 'package:app/quizzes/localDB.dart';
+import 'package:app/dataBases/db_connect.dart';
+import 'package:app/dataBases/localDB.dart';
 import 'package:app/quizzes/optionCard.dart';
 import 'package:app/quizzes/questionIndex.dart';
 import 'package:app/quizzes/question_model.dart';
@@ -8,39 +9,79 @@ import 'package:flutter/material.dart';
 import 'package:app/constants/colors.dart';
 
 class QuizRoot extends StatefulWidget {
-  const QuizRoot({super.key, required this.quizName});
-  final String quizName;
+  const QuizRoot({super.key, required this.quiz, required this.saveData});
+  final Future<Quiz> quiz;
+  final bool saveData;
   @override
   State<QuizRoot> createState() => _QuizRootState();
 }
 
 class _QuizRootState extends State<QuizRoot> {
-  late Future<Quiz> quiz = getQuizzes(widget.quizName);
+  late Future<Quiz> quiz = widget.quiz;
+
   int currentlySelected = -1;
   int questionIndex = 0;
   bool isFinished = false;
   int score = 0;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     //var test = ReadJsonFile.getQuizzes(path: 'assets/quizData/levels.json');
     //print(test);
     //print(test.runtimeType);
     //getQuizzes('level1');
-    
-    
-    
-    double height = MediaQuery.of(context).size.height; //get the height of the screen
+
+    double height =
+        MediaQuery.of(context).size.height; //get the height of the screen
     double width = MediaQuery.of(context).size.width;
     return FutureBuilder<Quiz>(
         future: quiz, // a previously-obtained Future<String> or null
         builder: (BuildContext context, AsyncSnapshot<Quiz> snapshot) {
-          if (snapshot.hasData) {
-            List<Question> questions = snapshot.data!.getQuestions();
+          print('DEBUGZ');
+          print(snapshot.hasData);
+          print(snapshot);
+          print(snapshot.data?.quizName);
+          
+          if (snapshot.hasData && snapshot.data?.quizName != "ERROR") {
+            List<Question>? questions = snapshot.data!.getQuestions();
+
+            // _moveToCurrent() {
+
+            //   while (true) {
+            //     for (int i = 0; i < questions[questionIndex].getColorList().length; i++) {
+            //       if (questions[questionIndex].getColorIndex(i) == correct) {
+            //         questionIndex++;
+            //         continue;
+            //       }
+            //     }
+            //     break;
+            //   }
+            // }
+
+            _showingAnswers() {
+              bool showingAnswers = true;
+              for (int i = 0;
+                  i < questions[questionIndex].getColorList().length;
+                  i++) {
+                if (questions[questionIndex].getColorIndex(i) == netral) {
+                  showingAnswers = false;
+                } else if (questions[questionIndex].getColorIndex(i) ==
+                    correct) {
+                  return true;
+                }
+              }
+              return showingAnswers;
+            }
 
             _confirmAnswer() {
               return GestureDetector(
                   onTap: () {
-                    print(currentlySelected);
+
                     setState(() {
                       //If nothing isSelected
                       if (currentlySelected == -1) {
@@ -50,7 +91,8 @@ class _QuizRootState extends State<QuizRoot> {
                           behavior: SnackBarBehavior.floating,
                           margin: EdgeInsets.symmetric(vertical: 20.0),
                         ));
-                      } else if (questions[questionIndex].getAlreadlySelectedIndex(currentlySelected)) {
+                      } else if (questions[questionIndex]
+                          .getAlreadlySelectedIndex(currentlySelected)) {
                         ScaffoldMessenger.of(context)
                             .showSnackBar(const SnackBar(
                           content: Text('Alreadly Done'),
@@ -58,12 +100,23 @@ class _QuizRootState extends State<QuizRoot> {
                           margin: EdgeInsets.symmetric(vertical: 20.0),
                         ));
                       } else {
-                        questions[questionIndex].setAlreadlySelectedIndex(currentlySelected, true);
-                        questions[questionIndex].answers[currentlySelected].isCorrect
-                            ? questions[questionIndex].setColorIndex(currentlySelected, correct)
-                            : questions[questionIndex].setColorIndex(currentlySelected, incorrect);
-                        if (questions[questionIndex].answers[currentlySelected].isCorrect) {
+                        questions[questionIndex]
+                            .setAlreadlySelectedIndex(currentlySelected, true);
+                        questions[questionIndex]
+                                .answers[currentlySelected]
+                                .isCorrect
+                            ? questions[questionIndex]
+                                .setColorIndex(currentlySelected, correct)
+                            : questions[questionIndex]
+                                .setColorIndex(currentlySelected, incorrect);
+                        if (questions[questionIndex]
+                                .answers[currentlySelected]
+                                .isCorrect ||
+                            _showingAnswers()) {
                           isFinished = true;
+                          //print(questions[questionIndex].toJson());
+
+                          //addToDB(questions[questionIndex]);
                         }
                       }
                     });
@@ -85,7 +138,7 @@ class _QuizRootState extends State<QuizRoot> {
             }
 
             bool addScore() {
-              print(currentlySelected);
+
               int counter = 0;
               for (int i = 0;
                   i < questions[questionIndex].answers.length;
@@ -101,24 +154,21 @@ class _QuizRootState extends State<QuizRoot> {
             }
 
             _optionList() {
-              print(currentlySelected);
+              //print(currentlySelected);
               double width = MediaQuery.of(context).size.width;
               double height = MediaQuery.of(context).size.height;
 
               return SizedBox(
                 width: 0.8 * width,
-                height: 0.3 * height,
+                height: 0.42 * height,
                 child: ListView.builder(
                   itemCount: questions[questionIndex].answers.length,
-                  prototypeItem: ListTile(
-                    title: Text(questions[questionIndex].title),
-                  ),
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
                         currentlySelected = index;
-                        print(currentlySelected);
-                 
+                        //print(currentlySelected);
+
                         if (!questions[questionIndex]
                             .getAlreadlySelectedIndex(currentlySelected)) {
                           setState(() {
@@ -133,9 +183,12 @@ class _QuizRootState extends State<QuizRoot> {
                                     .setColorIndex(i, netral);
                               }
                             }
-                            if (questions[questionIndex].getColorIndex(currentlySelected) == selected) {
-                              print('CHANGED');
-                              questions[questionIndex].setColorIndex(currentlySelected, netral);
+                            if (questions[questionIndex]
+                                    .getColorIndex(currentlySelected) ==
+                                selected) {
+                              //print('CHANGED');
+                              questions[questionIndex]
+                                  .setColorIndex(currentlySelected, netral);
                               currentlySelected = -1;
                             } else {
                               questions[questionIndex]
@@ -171,6 +224,7 @@ class _QuizRootState extends State<QuizRoot> {
                 if (isFinished) {
                   setState(() {
                     questionIndex++;
+                    currentlySelected = -1;
                   });
 
                   questions[questionIndex].clearAll();
@@ -248,8 +302,8 @@ class _QuizRootState extends State<QuizRoot> {
                           //totalQuestions: questions.length),
 
                           //space between question and options
-                          const SizedBox(
-                            height: 25.0,
+                          SizedBox(
+                            height: height * 0.01,
                           ),
                           _optionList(),
                         ],
