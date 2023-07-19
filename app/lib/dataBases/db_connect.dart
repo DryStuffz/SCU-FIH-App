@@ -9,7 +9,6 @@ var db = FirebaseFirestore.instance;
 
 void addToDB(Question ques, DateTime date) {
   var map = ques.toJson();
-  DateTime date =  DateTime.now();
   db.collection("dailyQuestions").doc('${date.month}-${date.day}-${date.year}').collection('questions').add(map);
   // Create a new user with a first and last name
 // final user = <String, dynamic>{
