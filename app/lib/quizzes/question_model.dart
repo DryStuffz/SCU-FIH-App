@@ -36,6 +36,7 @@ class Question {
 
   void setDefaultColors() {
     print('DEFAULT CALLED');
+    
     colorIndex = List.filled(answers.length, netral, growable: false);
   }
 
