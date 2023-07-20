@@ -44,7 +44,7 @@ dependencies:
   firebase_core: ^2.15.0
   cloud_firestore: ^4.8.3
   screen_loader: ^4.0.1
-  table_calendar: ^3.0.0
+  flutter_tts: ^3.0.0
   
   #firebase_database: '>=2.12.0 <6.1.0'
   #cloud_firestore: ^4.2.0
@@ -83,6 +83,8 @@ flutter:
    - assets/images/
    - assets/images/logo.png
    - assets/quizData/levels.json
+   - assets/quizData/completedLevels.json
+   - assets/quizData/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

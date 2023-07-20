@@ -1,11 +1,9 @@
 import 'package:app/home_page.dart';
-import 'package:app/quizzes/question_model.dart';
+import 'package:app/level1.dart';
 import 'package:app/screens/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:app/test.dart';
 import 'package:app/settings.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:screen_loader/screen_loader.dart';
 import 'firebase_options.dart';
 
 
@@ -40,9 +38,9 @@ class RootPage extends StatefulWidget {
 
 class _RootPageState extends State<RootPage> {
   int indexpage = 0;
-  static const List<Widget> indexPageOptions = <Widget>[
-    HomePage(),
-    Test(),
+  static  List<Widget> indexPageOptions = <Widget>[
+    const HomePage(),
+    const Level1(),
   ];
 
   void tappedPage(int index) {

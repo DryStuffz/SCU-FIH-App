@@ -1,3 +1,4 @@
+import 'package:app/dataBases/db_connect.dart';
 import 'package:app/quizzes/question_model.dart';
 import "package:flutter/material.dart";
 import 'dart:async';
@@ -21,6 +22,10 @@ class ReadJsonFile{
 
 
 Future<Quiz> getQuizzes(String quizName) async{
+
+  if (quizName == "Daily Quiz"){
+    return getFirebaseData();
+  }
   var dbValues =  await ReadJsonFile.readJsonData(path: 'assets/quizData/levels.json');
   //print(dbValues[quizName]);
   //print(dbValues[quizName].runtimeType);

@@ -111,6 +111,15 @@ class Question {
     print(map1);
     return jsonFile;
   }
+  List<MapEntry<String, bool>> ansToJson(){
+    List<MapEntry<String, bool>> data = [];
+    for(int i = 0 ; i < answers.length; i++){
+      data.add(MapEntry(answers[i].option, answers[i].isCorrect));
+    }
+
+    return data;
+  }
+
 
   factory Question.fromFirestore(
     DocumentSnapshot<Map<String, dynamic>> snapshot,
@@ -183,3 +192,7 @@ class Quiz {
     return questions[i];
   }
 }
+
+
+
+

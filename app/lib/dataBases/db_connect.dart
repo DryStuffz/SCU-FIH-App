@@ -2,7 +2,7 @@ import 'package:app/quizzes/question_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 var db = FirebaseFirestore.instance;
@@ -24,10 +24,11 @@ void addToDB(Question ques, DateTime date) {
 }
 
 Future<Quiz> getFirebaseData() async{
-  Quiz quiz = Quiz(quizName: 'todays DATE');
   DateTime now =  DateTime.now();
+  Quiz quiz = Quiz(quizName: 'Quiz: ${now.month}-${now.day}-${now.year}');
+  
   final docRef = db.collection('dailyQuestions').doc('${now.month}-${now.day}-${now.year}');
-  docRef.collection("questions").get().then(
+  await docRef.collection("questions").get().then(
   (querySnapshot) {
     print("Successfully completed");
     
@@ -35,6 +36,7 @@ Future<Quiz> getFirebaseData() async{
       //print('${docSnapshot.id} => ${docSnapshot.data()}');
       Question test = Question.fromFirestore(docSnapshot);
       quiz.addQuestion(test);
+      //print(quiz);
     }
   },
   
@@ -48,8 +50,25 @@ Future<Quiz> getFirebaseData() async{
   
 }
 
-Future<void> initFireBase() async {
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-}
+// Future<void> initFireBase() async {
+//   await Firebase.initializeApp(
+//     options: DefaultFirebaseOptions.currentPlatform,
+//   );
+// }
+
+
+
+// void updateJsonData() async {
+//   // Step 1: Read existing JSON data
+//   Map<String, dynamic> jsonData = await readJsonFile();
+
+//   if (jsonData != null) {
+//     // Step 2: Update the data as per your requirements
+//     jsonData['key'] = 'new_value'; // Replace 'key' and 'new_value' with your data to update.
+
+//     // Step 3: Write the updated JSON data back to the file
+//     await writeJsonFile(jsonData);
+
+//     print('JSON data updated successfully!');
+//   }
+// }

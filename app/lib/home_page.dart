@@ -1,13 +1,10 @@
-import 'package:app/Test.dart';
-import 'package:app/daily_problem.dart';
 import 'package:app/dataBases/db_connect.dart';
-import 'package:app/dataBases/localDB.dart';
+import 'package:app/quizzes/getQuizzes.dart';
 import 'package:app/quizzes/question_model.dart';
+import 'package:app/quizzes/quizScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:app/level1.dart';
-import 'package:app/quizzes/quiz_root.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+
 
 
 
@@ -17,7 +14,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future<Quiz> dq = getFirebaseData();
     double height =
         MediaQuery.of(context).size.height; //get the height of the screen
     double width =
@@ -27,7 +23,7 @@ class HomePage extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(builder: (BuildContext context) {
-              return  QuizRoot(quiz: dq, saveData: true,);
+              return  const QuizScreen(quizName: 'Daily Quiz', saveData: true);
             }),
           );
         },
@@ -52,7 +48,7 @@ class HomePage extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (BuildContext context) {
-                return   QuizRoot(quiz: getQuizzes('level1'), saveData: false,);
+                return   const QuizScreen(quizName: 'level1', saveData: false);
               }),
             );
           },
@@ -65,7 +61,7 @@ class HomePage extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (BuildContext context) {
-                return  QuizRoot(quiz: getQuizzes('level2'), saveData:  false,);
+                return  const QuizScreen(quizName: 'level2', saveData: false);
               }),
             );
           },
@@ -81,7 +77,7 @@ class HomePage extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (BuildContext context) {
-                return const Level1();
+                return  const QuizScreen(quizName: 'level1', saveData: false);
               }),
             );
           },
