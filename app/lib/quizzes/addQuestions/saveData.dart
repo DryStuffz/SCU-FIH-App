@@ -5,7 +5,6 @@ import 'package:app/quizzes/question_model.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 
-
 Future<String> readJsonData(String name) async {
   try {
     Directory appDir = await getApplicationDocumentsDirectory();
@@ -42,7 +41,8 @@ Future<void> updateJsonData(Question ques, String name) async {
     // Check if the "completed" key exists in the JSON data
     if (jsonData.containsKey("completed") && jsonData["completed"] is List) {
       // If the "completed" key is an array, add the new data to it
-      (jsonData["completed"] as List).addAll(ques.toNewData()["completed"] as Iterable);
+      (jsonData["completed"] as List)
+          .addAll(ques.toNewData()["completed"] as Iterable);
     } else {
       // If the "completed" key doesn't exist or is not an array, create it with the new data
       jsonData["completed"] = ques.toNewData()["completed"];
@@ -50,12 +50,10 @@ Future<void> updateJsonData(Question ques, String name) async {
 
     // Write the updated JSON data back to the file
     await writeJsonData(jsonData, name);
-  }
-  else{
-    await writeJsonData({'completed' : []}, name);
+  } else {
+    await writeJsonData({'completed': []}, name);
   }
 }
-
 
 Future<void> eraseFileData(String name) async {
   try {
@@ -78,24 +76,18 @@ Future<void> eraseFileData(String name) async {
   }
 }
 
-
 //data.json
-Future<Map<String, dynamic>> getCompletedJsonHistory() async{
+Future<Map<String, dynamic>> getCompletedJsonHistory() async {
   String jsonDataString = await readJsonData(completedQuestions);
-  
-   if (jsonDataString != "") {
+
+  if (jsonDataString != "") {
     Map<String, dynamic> jsonData = json.decode(jsonDataString);
     print(jsonData);
     return jsonData;
-   }
-   else{
+  } else {
     return Future(() => {});
-   }
+  }
 }
-
-
-
-
 
 Future<void> writeLevelIndex(int data) async {
   try {
@@ -113,11 +105,10 @@ Future<int> readLevelIndex() async {
     Directory appDir = await getApplicationDocumentsDirectory();
     //print(appDir);
     File file = File('${appDir.path}/$levelIndex');
-    try{
+    try {
       int indexNum = int.parse(await file.readAsString());
       return indexNum;
-    }
-    catch(e){
+    } catch (e) {
       print("Error parsing the string as an integer: $e");
     }
     return 0;
@@ -126,5 +117,3 @@ Future<int> readLevelIndex() async {
     return Future(() => 1);
   }
 }
-
-

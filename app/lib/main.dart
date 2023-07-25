@@ -1,4 +1,5 @@
 import 'package:app/home_page.dart';
+import 'package:app/constants/colors.dart';
 import 'package:app/level1.dart';
 import 'package:app/screens/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -7,9 +8,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:app/quizzes/addQuestions/saveData.dart';
 
-
 void main() async {
-  
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -23,7 +22,6 @@ class FluentFocusApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      
       debugShowCheckedModeBanner: false, //remove debugger flag
       theme: ThemeData(primarySwatch: Colors.green //appbar theme
           ),
@@ -55,10 +53,10 @@ class _RootPageState extends State<RootPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFE7E7E7),
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
         title: const Text('Fluent Focus'),
-        backgroundColor: const Color(0xFF4A4E69),
+        backgroundColor: blueDark,
       ),
       body: Center(
         child: indexPageOptions.elementAt(indexpage),
@@ -70,8 +68,9 @@ class _RootPageState extends State<RootPage> {
           BottomNavigationBarItem(icon: Icon(Icons.history), label: 'History'),
         ],
         currentIndex: indexpage,
-        selectedItemColor: const Color(0xFF4A4E69),
-        backgroundColor: const Color(0xFFF8F7F7),
+        unselectedItemColor: blueGreyLight,
+        selectedItemColor: const Color(0xFFFFFFFF),
+        backgroundColor: blueDark,
         onTap: tappedPage,
       ),
     );
