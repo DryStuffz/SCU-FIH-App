@@ -96,7 +96,7 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const  addQuestion()),
+                MaterialPageRoute(builder: (context) => const addQuestion()),
               );
             },
           ),
@@ -105,6 +105,14 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
             title: const Text('Remove History'),
             onTap: () {
               eraseFileData(completedQuestions);
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.add),
+            title: const Text('Remove LEvelIndex'),
+            onTap: () {
+              eraseFileData(levelIndex);
+              writeLevelIndex(1);
             },
           )
         ],

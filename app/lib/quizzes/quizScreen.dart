@@ -6,6 +6,7 @@ import 'dart:collection';
 import 'package:app/constants/colors.dart';
 import 'package:app/constants/test_strings.dart';
 import 'package:app/dataBases/db_connect.dart';
+import 'package:app/main.dart';
 import 'package:app/quizzes/addQuestions/saveData.dart';
 import 'package:app/quizzes/getQuizzes.dart';
 import 'package:app/quizzes/questionIndex.dart';
@@ -37,7 +38,8 @@ class QuizScreen extends StatelessWidget {
             } else if (snapshot.hasError) {
               return const Text('Error loading quiz data');
             } else if (snapshot.hasData) {
-              return QuizWidget(
+              return 
+              QuizWidget(
                 quiz: snapshot.data!,
                 isSaved: saveData,
               );
@@ -50,6 +52,7 @@ class QuizScreen extends StatelessWidget {
     );
   }
 }
+
 
 class QuizWidget extends StatefulWidget {
   final Quiz quiz;
@@ -81,6 +84,20 @@ class _QuizWidgetState extends State<QuizWidget> {
     Question currentQuestion =
         widget.quiz.getQuestionIndex(currentQuestionIndex);
 
+
+    void increaseLevelIndex(int total, int correct, String qName) async {
+      //if user gets at least 80% of the way done, upadte the index
+      int levelIndex  = await getLevelIndex(qName);
+      if (correct >= total * 0.8 && await readLevelIndex() <= levelIndex) {
+        
+
+        print(await readLevelIndex());
+        writeLevelIndex(await readLevelIndex() + 1);
+        print(await readLevelIndex());
+      }
+    }
+
+
     confirmAnswer() {
       if (currentlySelected != -1) {
         currentQuestion.setColorIndex(
@@ -104,27 +121,26 @@ class _QuizWidgetState extends State<QuizWidget> {
       return true;
     }
     
-     test() async{
-      print(await readLevelIndex());
-    }
+
     submitAnswer() {
-      print(readJsonData(completedQuestions));
-      writeLevelIndex(1);
-      
-      test();
+      //print(readJsonData(completedQuestions));
+
       //print(currentQuestion.toNewData());
-      //updateJsonData(currentQuestion, 'data.json');
+      updateJsonData(currentQuestion, 'data.json');
       //check if we update score or not
       if (updateScore()) {
         score++;
       }
       if(widget.isSaved){
-        updateJsonData(currentQuestion, 'data.json');
+        //updateJsonData(currentQuestion, 'data.json');
       }
       isFinished = false;
       currentQuestionIndex++;
       currentlySelected = -1;
       if (currentQuestionIndex == widget.quiz.questions.length) {
+        if(widget.quiz.quizName != "Daily Quiz"){
+          increaseLevelIndex(widget.quiz.questions.length,score, widget.quiz.quizName );
+        }
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
@@ -134,7 +150,14 @@ class _QuizWidgetState extends State<QuizWidget> {
                 onRestartQuiz: () {
                   // Restart the quiz
                   // You can navigate back to the first question or reset the state of the quiz
-                  Navigator.pop(context);
+                  Navigator.popUntil(context, (route) => false);
+                  //Navigator.pop(context);
+                  Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const RootPage(), // Replace AnotherScreen with your desired screen
+              ),
+            );
                 },
               ),
             ));
@@ -147,6 +170,13 @@ class _QuizWidgetState extends State<QuizWidget> {
         title: Text(widget.quiz.quizName),
         shadowColor: Colors.transparent,
         elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            // When the back button is pressed, navigate back to the previous page.
+            Navigator.pop(context, true);
+          },
+        ),
         actions: [
           Padding(
             padding: const EdgeInsets.all(18.0),
@@ -273,12 +303,6 @@ class AnswerButton extends StatelessWidget {
     );
   }
 }
-
-// ... (other code remains unchanged)
-
-
-// ... (other code remains unchanged)
-
 
 
 

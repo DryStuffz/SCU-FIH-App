@@ -1,5 +1,5 @@
 {
-  "Level 1": [
+  "Vocab": [
     {"skillLevel" : 1},
     {
       "title": "What is the correct greeting to use when meeting someone for the first time?",
@@ -192,8 +192,8 @@
     }
   ]
   ,
-  "Level 2": [
-    {"skillLevel" : 1},
+  "Communication": [
+    {"skillLevel" : 2},
     {
       "title": "TESTTINGNGGGGGGGGG",
       "options": [
@@ -214,8 +214,8 @@
       ]
     }
   ],
-  "Level 3": [
-    {"skillLevel" : 1},
+  "Future/Past": [
+    {"skillLevel" : 3},
     {
       "title": "What is the correct greeting to use when meeting someone for the first time?",
       "options": [
@@ -352,7 +352,7 @@
       ]
     }
   ],
-  "Level 4": [
+  "Comparative": [
     {"skillLevel" : 4},
     {
       "title": "What is the correct greeting to use when meeting someone for the first time?",
@@ -490,7 +490,7 @@
       ]
     }
   ],
-  "Level 5": [
+  "Exceptions": [
     {"skillLevel" : 5},
     {
       "title": "What is the correct greeting to use when meeting someone for the first time?",
@@ -628,7 +628,7 @@
       ]
     }
   ],
-  "Level 6": [
+  "Idioms": [
     {"skillLevel" : 6},
     {
       "title": "What is the correct greeting to use when meeting someone for the first time?",
@@ -766,7 +766,7 @@
       ]
     }
   ],
-  "Level 7": [
+  "Formal": [
     {"skillLevel" : 7},
     {
       "title": "What is the correct greeting to use when meeting someone for the first time?",
@@ -904,7 +904,7 @@
       ]
     }
   ],
-  "Level 8": [
+  "Analysis": [
     {"skillLevel" : 8},
     {
       "title": "What is the correct greeting to use when meeting someone for the first time?",
@@ -1042,7 +1042,7 @@
       ]
     }
   ],
-  "Level 9": [
+  "Fluent": [
     {"skillLevel" : 9},
     {
       "title": "What is the correct greeting to use when meeting someone for the first time?",
@@ -1179,144 +1179,6 @@
         {"Three": false}
       ]
     }
-  ],
-  "Level 10": [
-    {"skillLevel" : 10},
-    {
-      "title": "What is the correct greeting to use when meeting someone for the first time?",
-      "options": [
-        {"Goodbye": false},
-        {"Thank you": false},
-        {"Hello": true},
-        {"Sorry": false}
-      ]
-    },
-    {
-      "title": "Who is the person that gives birth?",
-      "options": [
-        {"Sister": false},
-        {"Father": false},
-        {"Mother": true},
-        {"Friend": false}
-      ]
-    },
-    {
-      "title": "Choose the correct past tense form of the verb 'to eat':",
-      "options": [
-        {"Eaten": false},
-        {"Eat": false},
-        {"Ate": true},
-        {"Eating": false}
-      ]
-    },
-    {
-      "title": "Which place do you live in?",
-      "options": [
-        {"School": false},
-        {"House": true},
-        {"Garden": false},
-        {"Park": false}
-      ]
-    },
-    {
-      "title": "What is the correct future tense form of the verb 'to go'?",
-      "options": [
-        {"Went": false},
-        {"Going": false},
-        {"Gone": false},
-        {"Will go": true}
-      ]
-    },
-    {
-      "title": "Choose the correct present tense form of the verb 'to play':",
-      "options": [
-        {"Played": false},
-        {"Playing": true},
-        {"Plays": false},
-        {"Play": false}
-      ]
-    },
-    {
-      "title": "What is the opposite of 'hot'?",
-      "options": [
-        {"Cold": true},
-        {"Big": false},
-        {"Fast": false},
-        {"Bright": false}
-      ]
-    },
-    {
-      "title": "What is the opposite of 'big'?",
-      "options": [
-        {"Small": true},
-        {"Tall": false},
-        {"Fast": false},
-        {"Wide": false}
-      ]
-    },
-    {
-      "title": "How do you say 'thank you' in English?",
-      "options": [
-        {"Help me": false},
-        {"Screw you": false},
-        {"Sorry": false},
-        {"Thank you": true}
-      ]
-    },
-    {
-      "title": "Which word rhymes with 'cat'?",
-      "options": [
-        {"Hat": true},
-        {"Dog": false},
-        {"Car": false},
-        {"Bat": false}
-      ]
-    },
-    {
-      "title": "What is the opposite of 'happy'?",
-      "options": [
-        {"Sad": true},
-        {"Tired": false},
-        {"Angry": false},
-        {"Excited": false}
-      ]
-    },
-    {
-      "title": "What is the opposite of 'cold'?",
-      "options": [
-        {"Hot": true},
-        {"Warm": false},
-        {"Cool": false},
-        {"Frozen": false}
-      ]
-    },
-    {
-      "title": "Which word means 'goodbye'?",
-      "options": [
-        {"Hello": false},
-        {"Bye": true},
-        {"Howdy": false},
-        {"Hey": false}
-      ]
-    },
-    {
-      "title": "How do you say 'please' in English?",
-      "options": [
-        {"Peas": false},
-        {"Freeze": false},
-        {"Appease": false},
-        {"Please": true}
-      ]
-    },
-    {
-      "title": "Choose the correct shape:",
-      "options": [
-        {"Circle": true},
-        {"Dog": false},
-        {"Happy": false},
-        {"Three": false}
-      ]
-    }
   ]
- 
+
 }

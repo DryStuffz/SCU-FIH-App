@@ -1,7 +1,7 @@
 import "package:app/constants/colors.dart";
+import "package:app/quizzes/addQuestions/saveData.dart";
+import "package:app/quizzes/getQuizzes.dart";
 import "package:flutter/material.dart";
-
-
 
 class ResultsScreen extends StatelessWidget {
   final int totalQuestions;
@@ -13,10 +13,13 @@ class ResultsScreen extends StatelessWidget {
     required this.totalQuestions,
     required this.correctAnswers,
     required this.onRestartQuiz,
+
   });
 
   @override
   Widget build(BuildContext context) {
+   
+
     return Scaffold(
       backgroundColor: grey,
       appBar: AppBar(
@@ -38,8 +41,9 @@ class ResultsScreen extends StatelessWidget {
               ),
               CircleAvatar(
                 radius: 70.0,
-                backgroundColor:
-                    (correctAnswers >= totalQuestions *0.8) ? correct : incorrect,
+                backgroundColor: (correctAnswers >= totalQuestions * 0.8)
+                    ? correct
+                    : incorrect,
                 child: Text(
                   '$correctAnswers/$totalQuestions',
                   style: const TextStyle(fontSize: 30.0),
@@ -52,23 +56,18 @@ class ResultsScreen extends StatelessWidget {
                   ? 'Try Again'
                   : 'Good Job!'),
               const SizedBox(height: 25),
-              
               ElevatedButton(
                 onPressed: onRestartQuiz,
-                style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(blueGrey)),
+                style: const ButtonStyle(
+                    backgroundColor: MaterialStatePropertyAll(blueGrey)),
                 child: const Text('Home'),
               ),
+              
+            
             ],
           ),
         ),
       ),
     );
-  }
-}
-
-void increaseLevelIndex(int total, int correct){
-  //if user gets at least 80% of the way done, upadte the index
-  if(correct >= total *0.8){
-
   }
 }

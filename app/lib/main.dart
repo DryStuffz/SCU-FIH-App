@@ -23,6 +23,7 @@ class FluentFocusApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      
       debugShowCheckedModeBanner: false, //remove debugger flag
       theme: ThemeData(primarySwatch: Colors.green //appbar theme
           ),
@@ -40,7 +41,7 @@ class RootPage extends StatefulWidget {
 
 class _RootPageState extends State<RootPage> {
   int indexpage = 0;
-  static  List<Widget> indexPageOptions = <Widget>[
+  List<Widget> indexPageOptions = <Widget>[
     MyHomePage(),
     const Level1(),
   ];

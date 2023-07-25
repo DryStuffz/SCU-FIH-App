@@ -43,10 +43,7 @@ class History extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('History'),
-        actions: [],
-      ),
+ 
       body: FutureBuilder<Map<String, dynamic>>(
         future: newData,
         builder: (context, snapshot) {
