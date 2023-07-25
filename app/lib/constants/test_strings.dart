@@ -10,3 +10,6 @@ class CustomTextStyle {
   );
 
 }
+
+const String completedQuestions = "data.json";
+const String levelIndex = "unlockedLevels.json";

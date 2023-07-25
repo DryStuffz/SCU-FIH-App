@@ -5,9 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:app/settings.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:app/quizzes/addQuestions/saveData.dart';
 
 
 void main() async {
+  
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -39,7 +41,7 @@ class RootPage extends StatefulWidget {
 class _RootPageState extends State<RootPage> {
   int indexpage = 0;
   static  List<Widget> indexPageOptions = <Widget>[
-    const HomePage(),
+    MyHomePage(),
     const Level1(),
   ];
 

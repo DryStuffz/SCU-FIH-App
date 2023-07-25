@@ -1,4 +1,5 @@
-
+import 'package:app/history/historyScreen.dart';
+import 'package:app/quizzes/addQuestions/saveData.dart';
 import 'package:app/quizzes/questionIndex.dart';
 import 'package:flutter/material.dart';
 
@@ -12,15 +13,25 @@ class Level1 extends StatefulWidget {
 class _Level1State extends State<Level1> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('This is A LEVEL'),
-        ),
-        body: const Column(
-          children: [
-            //QuestionCard(question: "TESTING"),
-            QuestionIndex(currentQuestion: 3, numQuestion: 10, question: 'Testing'),
-          ],
-        ));
+    return History();
+    // return Scaffold(
+    //     appBar: AppBar(
+    //       title: const Text('This is A LEVEL'),
+    //     ),
+    //     body: Column(
+    //       children: [
+    //         //QuestionCard(question: "TESTING"),
+    //         const QuestionIndex(
+    //             currentQuestion: 3, numQuestion: 10, question: 'Testing'),
+    //         ElevatedButton(
+    //             onPressed: () {
+    //               eraseFileData();
+    //               //updateJsonData();
+    //               //writeJsonData({'test' : 3});
+    //               //print(readJsonData());
+    //             },
+    //             child: Text('add')),
+    //       ],
+    //     ));
   }
 }

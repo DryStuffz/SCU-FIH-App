@@ -49,26 +49,3 @@ Future<Quiz> getFirebaseData() async{
   
   
 }
-
-// Future<void> initFireBase() async {
-//   await Firebase.initializeApp(
-//     options: DefaultFirebaseOptions.currentPlatform,
-//   );
-// }
-
-
-
-// void updateJsonData() async {
-//   // Step 1: Read existing JSON data
-//   Map<String, dynamic> jsonData = await readJsonFile();
-
-//   if (jsonData != null) {
-//     // Step 2: Update the data as per your requirements
-//     jsonData['key'] = 'new_value'; // Replace 'key' and 'new_value' with your data to update.
-
-//     // Step 3: Write the updated JSON data back to the file
-//     await writeJsonFile(jsonData);
-
-//     print('JSON data updated successfully!');
-//   }
-// }

@@ -1,4 +1,6 @@
+import 'package:app/constants/test_strings.dart';
 import 'package:app/quizzes/addQuestions/addQuestions.dart';
+import 'package:app/quizzes/addQuestions/saveData.dart';
 import 'package:app/screens/splash_screen/help_page.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +12,7 @@ class SettingsDrawer extends StatefulWidget {
 }
 
 class _SettingsDrawerState extends State<SettingsDrawer> {
+  
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -79,10 +82,12 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
             leading: const Icon(Icons.help),
             title: const Text('Help'),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const HelpPage()),
-              );
+              writeLevelIndex(1);
+              
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => const HelpPage()),
+              // );
             },
           ),
           ListTile(
@@ -93,6 +98,13 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
                 context,
                 MaterialPageRoute(builder: (context) => const  addQuestion()),
               );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.add),
+            title: const Text('Remove History'),
+            onTap: () {
+              eraseFileData(completedQuestions);
             },
           )
         ],

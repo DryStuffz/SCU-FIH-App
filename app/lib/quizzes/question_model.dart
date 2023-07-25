@@ -36,7 +36,7 @@ class Question {
 
   void setDefaultColors() {
     print('DEFAULT CALLED');
-    
+
     colorIndex = List.filled(answers.length, netral, growable: false);
   }
 
@@ -112,15 +112,35 @@ class Question {
     print(map1);
     return jsonFile;
   }
-  List<MapEntry<String, bool>> ansToJson(){
+
+  List<MapEntry<String, bool>> ansToJson() {
     List<MapEntry<String, bool>> data = [];
-    for(int i = 0 ; i < answers.length; i++){
+    for (int i = 0; i < answers.length; i++) {
       data.add(MapEntry(answers[i].option, answers[i].isCorrect));
     }
 
     return data;
   }
 
+  Map<String, dynamic> toNewData() {
+    List<Map<String, bool>> ansData = [];
+    for (int i = 0; i < answers.length; i++) {
+      ansData.add(answers[i].getAnsMAP());
+    }
+    DateTime now = DateTime.now();
+    final newData = {
+      "completed": [
+        {
+          "title": title,
+          "options": ansData,
+          "date": '${now.month}-${now.day}-${now.year}',
+        },
+        // Add more items to the array if needed...
+      ]
+    };
+
+    return newData;
+  }
 
   factory Question.fromFirestore(
     DocumentSnapshot<Map<String, dynamic>> snapshot,
@@ -129,11 +149,11 @@ class Question {
     final data = snapshot.data();
     final List<Answer> ans = [];
     //if (data?['options'] is Iterable) {
-      //print(data?['options']);
-      for (var item in data?['options'].entries) {
-        ans.add(Answer.fromMap(item));
-       // print(item);
-      }
+    //print(data?['options']);
+    for (var item in data?['options'].entries) {
+      ans.add(Answer.fromMap(item));
+      // print(item);
+    }
     //}
     //print(ans);
     return Question(
@@ -156,6 +176,10 @@ class Answer {
 
   factory Answer.fromMap(MapEntry<String, dynamic> m) {
     return Answer(option: m.key, isCorrect: m.value);
+  }
+
+  Map<String, bool> getAnsMAP() {
+    return {option : isCorrect};
   }
 }
 
@@ -193,7 +217,3 @@ class Quiz {
     return questions[i];
   }
 }
-
-
-
-

@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:collection';
 
 import 'package:app/constants/colors.dart';
+import 'package:app/constants/test_strings.dart';
 import 'package:app/dataBases/db_connect.dart';
 import 'package:app/quizzes/addQuestions/saveData.dart';
 import 'package:app/quizzes/getQuizzes.dart';
@@ -102,14 +103,23 @@ class _QuizWidgetState extends State<QuizWidget> {
       }
       return true;
     }
-
+    
+     test() async{
+      print(await readLevelIndex());
+    }
     submitAnswer() {
+      print(readJsonData(completedQuestions));
+      writeLevelIndex(1);
+      
+      test();
+      //print(currentQuestion.toNewData());
+      //updateJsonData(currentQuestion, 'data.json');
       //check if we update score or not
       if (updateScore()) {
         score++;
       }
       if(widget.isSaved){
-        //addQuizData(currentQuestion);
+        updateJsonData(currentQuestion, 'data.json');
       }
       isFinished = false;
       currentQuestionIndex++;
