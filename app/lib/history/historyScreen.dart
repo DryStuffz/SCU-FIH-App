@@ -41,9 +41,7 @@ class History extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
- 
       body: FutureBuilder<Map<String, dynamic>>(
         future: newData,
         builder: (context, snapshot) {
@@ -53,56 +51,56 @@ class History extends StatelessWidget {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else {
             final data = snapshot.data!;
-            try{
+            try {
               List<dynamic> itemsToShow = data["completed"];
-            print(itemsToShow); 
-            return Column(
-              children: [
-
-                IconButton(
-                  icon: const Icon(Icons.search),
-                  onPressed: () async {
-                    final selected = await showSearch(
-                      context: context,
-                      delegate: SearchHistoryDelegate(itemsToShow),
-                    );
-                    if (selected != null) {
-                      // Handle the selected item, if needed.
-                    }
-                  },
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    itemCount: itemsToShow.length,
-                    itemBuilder: (context, index) {
-                      // Access the data for each card
-                      var cardData = itemsToShow[index];
-                      return Card(
-                        child: ListTile(
-                          title: Text(cardData['title']),
-                          subtitle: Text(cardData['date']),
-                          onTap: (){showOptionsAlertDialog(context, cardData['options']);},
-                          // Add other card content as needed...
-                        ),
+              print(itemsToShow);
+              return Column(
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.search),
+                    onPressed: () async {
+                      final selected = await showSearch(
+                        context: context,
+                        delegate: SearchHistoryDelegate(itemsToShow),
                       );
+                      if (selected != null) {
+                        // Handle the selected item, if needed.
+                      }
                     },
                   ),
-                ),
-              ],
-            );
-            }
-            catch(e){
+                  Expanded(
+                    child: ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      itemCount: itemsToShow.length,
+                      itemBuilder: (context, index) {
+                        // Access the data for each card
+                        var cardData = itemsToShow[index];
+                        return Card(
+                          child: ListTile(
+                            title: Text(cardData['title']),
+                            subtitle: Text(cardData['date']),
+                            onTap: () {
+                              showOptionsAlertDialog(
+                                  context, cardData['options']);
+                            },
+                            // Add other card content as needed...
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              );
+            } catch (e) {
               print(e);
             }
-          //   finally{
-          //     // ignore: control_flow_in_finally
-          //     return const Text('NO HISTORY');
-          //   }
-          return Text("NO HISTORY FOUND");
-            
-           }
+            //   finally{
+            //     // ignore: control_flow_in_finally
+            //     return const Text('NO HISTORY');
+            //   }
+            return Text("NO HISTORY FOUND");
+          }
         },
       ),
     );
@@ -165,10 +163,12 @@ class SearchHistoryDelegate extends SearchDelegate<dynamic> {
 
   @override
   Widget buildResults(BuildContext context) {
-    final List<dynamic> results = searchList.where((item) => item['title']
+    final List<dynamic> results = searchList
+        .where((item) => item['title']
             .toString()
             .toLowerCase()
-            .contains(query.toLowerCase()) ).toList();
+            .contains(query.toLowerCase()))
+        .toList();
     return ListView.builder(
       itemCount: results.length,
       itemBuilder: (context, index) {
