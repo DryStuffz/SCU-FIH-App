@@ -3,6 +3,7 @@ import 'package:app/quizzes/addQuestions/addQuestions.dart';
 import 'package:app/quizzes/addQuestions/saveData.dart';
 import 'package:app/screens/splash_screen/help_page.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsDrawer extends StatefulWidget {
   const SettingsDrawer({super.key});
@@ -114,9 +115,25 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
               eraseFileData(levelIndex);
               writeLevelIndex(1);
             },
+          ),
+          ListTile(
+            leading: const Icon(Icons.add),
+            title: const Text('TEST'),
+            onTap: () {
+              clearData();
+            },
           )
         ],
       ),
     );
   }
 }
+
+
+
+
+  void clearData() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.clear();
+
+  }
