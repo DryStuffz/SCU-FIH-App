@@ -123,39 +123,141 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       Align(
-        alignment: Alignment.topCenter,
+        alignment: Alignment.center,
         child: SingleChildScrollView(
           child: Column(children: [
-            const SizedBox(
-              // spacing inbetween rows
-              height: 20,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (BuildContext context) {
-                    return const QuizScreen(
-                        quizName: 'Daily Quiz', saveData: true);
-                  }),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: blueDark,
-                fixedSize: Size(0.9 * width, 0.3 * height),
+            const Align(
+              alignment: Alignment.center,
+              child: Text(
+                'Daily Problem',
+                style: TextStyle(
+                    fontSize: 35,
+                    color: Colors.white,
+                    fontFamily: 'Serifs',
+                    letterSpacing: 2,
+                    shadows: [
+                      Shadow(
+                          // bottomLeft
+                          offset: Offset(-1.5, -1.5),
+                          color: blueDark),
+                      Shadow(
+                          // bottomRight
+                          offset: Offset(1.5, -1.5),
+                          color: blueDark),
+                      Shadow(
+                          // topRight
+                          offset: Offset(1.5, 1.5),
+                          color: blueDark),
+                      Shadow(
+                          // topLeft
+                          offset: Offset(-1.5, 1.5),
+                          color: blueDark),
+                    ]),
               ),
-              child: Stack(children: [
-                Container(
-                    height: 30,
-                    width: double.infinity,
-                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
-                    child: const Text(
-                      'Daily Problem',
-                    ))
-              ]),
             ),
             const SizedBox(
               // spacing inbetween rows
-              height: 20,
+              height: 15,
+            ),
+            Stack(children: [
+              SizedBox(
+                width: 0.6 * width,
+                height: 0.26 * height,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: blueGreyLight,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Color.fromARGB(147, 46, 46, 80),
+                        spreadRadius: 1,
+                        blurRadius: 10,
+                      )
+                    ],
+                  ),
+                  child: const Align(
+                    alignment: Alignment(0, 0.84),
+                    child: FittedBox(
+                      fit: BoxFit.fitWidth,
+                      child: Text(
+                        'Test Your Knowledge!',
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Color.fromARGB(221, 0, 5, 12),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (BuildContext context) {
+                      return const QuizScreen(
+                          quizName: 'Daily Quiz', saveData: true);
+                    }),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  backgroundColor: blueDark,
+                  minimumSize: Size(0.6 * width, 0.2 * height),
+                  maximumSize: Size(0.6 * width, 0.2 * height),
+                  shadowColor: const Color.fromARGB(255, 0, 0, 0),
+                  elevation: 5,
+                ),
+                child: const Align(
+                  child: FittedBox(
+                    fit: BoxFit.fitWidth,
+                    child: Text(
+                      'Go',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ]),
+            const SizedBox(
+              // spacing inbetween rows
+              height: 30,
+            ),
+            const Align(
+              child: Text(
+                'Levels',
+                style: TextStyle(
+                    fontFamily: 'Serifs',
+                    fontSize: 35,
+                    letterSpacing: 2,
+                    color: Colors.white,
+                    shadows: [
+                      Shadow(
+                          // bottomLeft
+                          offset: Offset(-1.5, -1.5),
+                          color: blueDark),
+                      Shadow(
+                          // bottomRight
+                          offset: Offset(1.5, -1.5),
+                          color: blueDark),
+                      Shadow(
+                          // topRight
+                          offset: Offset(1.5, 1.5),
+                          color: blueDark),
+                      Shadow(
+                          // topLeft
+                          offset: Offset(-1.5, 1.5),
+                          color: blueDark),
+                    ]),
+              ),
+            ),
+            const SizedBox(
+              // spacing inbetween rows
+              height: 10,
             ),
             ExpansionTile(
               childrenPadding: const EdgeInsets.only(top: 12, bottom: 12),
@@ -193,7 +295,7 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                             child: const Align(
-                              alignment: Alignment(0, 0.79),
+                              alignment: Alignment(0, 0.84),
                               child: FittedBox(
                                 fit: BoxFit.fitWidth,
                                 child: Text(
@@ -272,7 +374,7 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                             child: const Align(
-                              alignment: Alignment(0, 0.79),
+                              alignment: Alignment(0, 0.84),
                               child: FittedBox(
                                 fit: BoxFit.fitWidth,
                                 child: Text(
@@ -344,7 +446,7 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                             child: const Align(
-                              alignment: Alignment(0, 0.79),
+                              alignment: Alignment(0, 0.84),
                               child: FittedBox(
                                 fit: BoxFit.fitWidth,
                                 child: Text(
@@ -441,7 +543,7 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                             child: const Align(
-                              alignment: Alignment(0, 0.79),
+                              alignment: Alignment(0, 0.84),
                               child: FittedBox(
                                 fit: BoxFit.fitWidth,
                                 child: Text(
@@ -513,7 +615,7 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                             child: const Align(
-                              alignment: Alignment(0, 0.79),
+                              alignment: Alignment(0, 0.84),
                               child: FittedBox(
                                 fit: BoxFit.fitWidth,
                                 child: Text(
@@ -585,7 +687,7 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                             child: const Align(
-                              alignment: Alignment(0, 0.79),
+                              alignment: Alignment(0, 0.84),
                               child: FittedBox(
                                 fit: BoxFit.fitWidth,
                                 child: Text(
@@ -682,7 +784,7 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                             child: const Align(
-                              alignment: Alignment(0, 0.79),
+                              alignment: Alignment(0, 0.84),
                               child: FittedBox(
                                 fit: BoxFit.fitWidth,
                                 child: Text(
@@ -753,7 +855,7 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                             child: const Align(
-                              alignment: Alignment(0, 0.79),
+                              alignment: Alignment(0, 0.84),
                               child: FittedBox(
                                 fit: BoxFit.fitWidth,
                                 child: Text(
@@ -825,7 +927,7 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                             child: const Align(
-                              alignment: Alignment(0, 0.79),
+                              alignment: Alignment(0, 0.84),
                               child: FittedBox(
                                 fit: BoxFit.fitWidth,
                                 child: Text(

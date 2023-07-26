@@ -117,7 +117,15 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-fonts:
-  - family: inter
-    fonts:
-      - asset: assets/fonts/Inter-VariableFont_slnt,wght.ttf
+  fonts:
+    - family: inter
+      fonts:
+        - asset: assets/fonts/Inter-VariableFont_slnt,wght.ttf
+    - family: Serifs
+      fonts:
+        - asset: assets/fonts/Serif-Regular.ttf
+        - asset: assets/fonts/Serif-Italic.ttf
+          style: italic
+    - family: Lumanosimo
+      fonts:
+        - asset: assets/fonts/Lumanosimo-Regular.ttf
