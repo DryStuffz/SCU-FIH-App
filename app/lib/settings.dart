@@ -93,6 +93,25 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
               );
             },
           ),
+           ListTile(
+            leading: const Icon(Icons.delete),
+            title: const Text('Restart All Data'),
+            onTap: () {
+              final dte = DateTime.now().subtract(const Duration(days: 30));
+              eraseFileData(completedQuestions);
+              eraseFileData(levelIndex);
+              writeLevelIndex(1);
+              clearData();
+              Hive.box<ListData>(dailyBoxName).put('Scores',ListData([0,0,0,0,0,0,0,0,0,0,0]));
+              final StreaksBox = Hive.box(boxName);
+              StreaksBox.put(keyStreak, 0);
+              StreaksBox.put(keymaxStreak, 0);
+              StreaksBox.put(keyGamesPlayed, 0);
+              StreaksBox.put(keyGamesWon, 0);
+              StreaksBox.put(keyLastDate, dte);
+              print(dte);
+            },
+          ),
           ListTile(
             leading: const Icon(Icons.add),
             title: const Text('ADD QUESTIONS'),

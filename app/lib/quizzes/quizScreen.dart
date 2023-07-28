@@ -65,12 +65,16 @@ class QuizScreen extends StatelessWidget {
                     return const CircularProgressIndicator();
                   } else if (snapshot2.hasError) {
                     return const Text('Error loading quiz data');
-                  } else if (snapshot2.data![0] >=
+                  }else if(snapshot.data!.questions.isEmpty){
+                    return const Text("Error. No Quiz Data Found", style: TextStyle(color: grey));
+                  } 
+                  else if (snapshot2.data![0] >=
                       snapshot.data!.questions.length) {
                     return ResultsScreen(
                       totalQuestions: snapshot.data!.questions.length,
                       correctAnswers: snapshot2.data![1],
                       addToData: true,
+                      updateStreaks: false,
                       data:
                           Hive.box<ListData>('DailyScoresList').get('Scores') ??
                               ListData([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]),
@@ -227,6 +231,7 @@ class _QuizWidgetState extends State<QuizWidget> {
             context,
             MaterialPageRoute(
               builder: (context) => ResultsScreen(
+                updateStreaks: true,
                 totalQuestions: widget.quiz.questions.length,
                 correctAnswers: score,
                 addToData: widget.isSaved,

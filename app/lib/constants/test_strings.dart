@@ -16,6 +16,16 @@ const String levelIndex = "unlockedLevels.json";
 const int questionsPerLevel = 20;
 
 
+const String dailyBoxName = 'DailyScoresList';
+const String boxName = 'daily_streak_box';
+const String keyStreak = 'daily_streak';
+const String keyLastDate = 'last_date';
+const String keymaxStreak = "max_streak";
+const String keyGamesPlayed = "games_played"; 
+const String keyGamesWon = "games_won"; 
+
+
+
 String levelPrefix(String qName) {
       String level = "";
       switch (qName) {

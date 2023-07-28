@@ -1,8 +1,16 @@
+// ignore_for_file: prefer_const_constructors
+
 import "package:app/constants/colors.dart";
 import 'package:app/dataBases/hive.dart';
 import "package:flutter/material.dart";
 import 'package:syncfusion_flutter_charts/charts.dart';
+import "package:app/dataBases/dailyStreak.dart";
+import 'package:path_provider/path_provider.dart';
 import 'package:syncfusion_flutter_charts/sparkcharts.dart';
+import 'package:provider/provider.dart';
+import 'package:hive/hive.dart';
+import 'package:app/constants/test_strings.dart';
+
 
 class ResultsScreen extends StatelessWidget {
   const ResultsScreen({
@@ -12,16 +20,18 @@ class ResultsScreen extends StatelessWidget {
     required this.correctAnswers,
     required this.goHome,
     required this.data,
+    required this.updateStreaks,
   });
   final bool addToData;
   final int totalQuestions;
   final int correctAnswers;
   final VoidCallback goHome; // Callback to restart the quiz
   final ListData data;
+  final bool updateStreaks;
   @override
   Widget build(BuildContext context) {
     return (addToData)
-        ? DailyQuizResults(addedData: correctAnswers, goHome: goHome, resultData: data )
+        ? DailyQuizResults(updateStreaks: updateStreaks,  addedData: correctAnswers, goHome: goHome, resultData: data,numCorect: correctAnswers, totalQuestions: totalQuestions,)
         : LevelResultsScreen(
             correctAnswers: correctAnswers,
             goHome: goHome,
@@ -180,12 +190,40 @@ class GenertateResultData {
 
 
 class DailyQuizResults extends StatelessWidget {
-  const DailyQuizResults({super.key, required this.resultData, required this.addedData, required this.goHome,});
+  const DailyQuizResults({super.key, required this.updateStreaks, required this.resultData, required this.addedData, required this.goHome, required this.numCorect, required this.totalQuestions});
   final ListData resultData;
   final int addedData;
   final VoidCallback goHome;
+  final int numCorect;
+  final int totalQuestions;
+  final bool updateStreaks;
+  
   @override
   Widget build(BuildContext context) {
+    final dailyStreakManager = DailyStreakManager();
+    
+    //print(dailyStreakManager.getStreak());
+
+
+    final box = Hive.box(boxName);
+    //get games playwed and win%
+    int gamesPlayed = box.get(keyGamesPlayed, defaultValue: 0);
+    int gamesWon = box.get(keyGamesWon, defaultValue: 0);
+
+
+    if(updateStreaks){
+      dailyStreakManager.updateStreak();
+      gamesPlayed++;
+      if(numCorect >= 0.8*totalQuestions){
+        gamesWon++;
+      }
+
+      box.put(keyGamesPlayed, gamesPlayed);
+      box.put(keyGamesWon, gamesWon);
+
+    }
+    
+
     return  Scaffold(
       backgroundColor: blueDark,
       body: Column(
@@ -199,11 +237,11 @@ class DailyQuizResults extends StatelessWidget {
                   fontSize: 30, fontWeight: FontWeight.bold, color: grey),
               textAlign: TextAlign.left),
           const SizedBox(height: 50),
-          const Row(
+           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
+            children:  [
               Column(children: [
-                Text("3",
+                Text(gamesPlayed.toString(),
                     style: TextStyle(
                         fontSize: 18, fontWeight: FontWeight.bold, color: grey),
                     textAlign: TextAlign.left),
@@ -212,8 +250,8 @@ class DailyQuizResults extends StatelessWidget {
                         fontSize: 12, fontWeight: FontWeight.bold, color: grey),
                     textAlign: TextAlign.left),
               ]),
-              Column(children: [
-                Text("3",
+              Column(children:  [
+                Text("${(gamesWon/gamesPlayed * 100).toInt()}",
                     style: TextStyle(
                         fontSize: 18, fontWeight: FontWeight.bold, color: grey),
                     textAlign: TextAlign.left),
@@ -223,7 +261,7 @@ class DailyQuizResults extends StatelessWidget {
                     textAlign: TextAlign.left),
               ]),
               Column(children: [
-                Text("3",
+                Text(dailyStreakManager.getStreak().toString(),
                     style: TextStyle(
                         fontSize: 18, fontWeight: FontWeight.bold, color: grey),
                     textAlign: TextAlign.left),
@@ -232,8 +270,8 @@ class DailyQuizResults extends StatelessWidget {
                         fontSize: 12, fontWeight: FontWeight.bold, color: grey),
                     textAlign: TextAlign.left),
               ]),
-              Column(children: [
-                Text("3",
+              Column(children:  [
+                Text(dailyStreakManager.getMaxStreak().toString(),
                     style: TextStyle(
                         fontSize: 18, fontWeight: FontWeight.bold, color: grey),
                     textAlign: TextAlign.left),

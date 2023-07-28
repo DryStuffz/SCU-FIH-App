@@ -1,3 +1,4 @@
+import 'package:app/dataBases/dailyStreak.dart';
 import 'package:app/dataBases/hive.dart';
 import 'package:app/home_page.dart';
 import 'package:app/constants/colors.dart';
@@ -8,9 +9,10 @@ import 'package:app/settings.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'firebase_options.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
+  
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -18,6 +20,7 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(ListDataAdapter());
   await Hive.openBox<ListData>('DailyScoresList');
+  await Hive.openBox("daily_streak_box");
   runApp(const FluentFocusApp());
 }
 
