@@ -1,3 +1,4 @@
+import 'package:app/dataBases/hive.dart';
 import 'package:app/home_page.dart';
 import 'package:app/constants/colors.dart';
 import 'package:app/level1.dart';
@@ -5,14 +6,18 @@ import 'package:app/screens/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:app/settings.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'firebase_options.dart';
-import 'package:app/quizzes/addQuestions/saveData.dart';
+import 'package:hive/hive.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await Hive.initFlutter();
+  Hive.registerAdapter(ListDataAdapter());
+  await Hive.openBox<ListData>('DailyScoresList');
   runApp(const FluentFocusApp());
 }
 

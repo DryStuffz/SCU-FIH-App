@@ -31,11 +31,15 @@ Future<Quiz> getFirebaseData() async{
   await docRef.collection("questions").get().then(
   (querySnapshot) {
     print("Successfully completed");
-    
+    int count =0;
     for (var docSnapshot in querySnapshot.docs) {
       //print('${docSnapshot.id} => ${docSnapshot.data()}');
       Question test = Question.fromFirestore(docSnapshot);
       quiz.addQuestion(test);
+      count++;
+      if(count >= 10){
+        break;
+      }
       //print(quiz);
     }
   },
@@ -44,7 +48,7 @@ Future<Quiz> getFirebaseData() async{
   
   );
   //print('ERRORR');
-  print(quiz);
+  //print(quiz);
   return quiz;
   
   

@@ -1,8 +1,11 @@
 import 'package:app/constants/test_strings.dart';
+import 'package:app/dataBases/hive.dart';
 import 'package:app/quizzes/addQuestions/addQuestions.dart';
 import 'package:app/quizzes/addQuestions/saveData.dart';
+import 'package:app/quizzes/result_screen.dart';
 import 'package:app/screens/splash_screen/help_page.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsDrawer extends StatefulWidget {
@@ -83,12 +86,11 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
             leading: const Icon(Icons.help),
             title: const Text('Help'),
             onTap: () {
-              writeLevelIndex(1);
               
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => const HelpPage()),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const HelpPage()),
+              );
             },
           ),
           ListTile(
@@ -122,7 +124,26 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
             onTap: () {
               clearData();
             },
-          )
+          ),
+          ListTile(
+            leading: const Icon(Icons.help),
+            title: const Text('testing2'),
+            onTap: () {
+              final box = Hive.box<ListData>('DailyScoresList');
+              // final listData = ListData([0,0,0,0,0,0,0,0,0,0,0]);
+              // box.put('Scores', listData);
+              final listDataz = box.get('Scores');
+                  if (listDataz != null) {
+                    print('Retrieved List of integers from Hive: ${listDataz.integers}');
+                  } else {
+                    print('List of integers not found in Hive.');
+                  }
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => const ResultsData()),
+              //);
+            },
+          ),
         ],
       ),
     );

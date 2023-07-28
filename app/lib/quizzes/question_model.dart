@@ -211,7 +211,7 @@ class Quiz {
 
   Question getQuestionIndex(int i) {
     if (questions == [] || i >= questions.length) {
-      return Question(title: "INDEX Error", answers: []);
+      return questions[questions.length-1];
     }
 
     return questions[i];

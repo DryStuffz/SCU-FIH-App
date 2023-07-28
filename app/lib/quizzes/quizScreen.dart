@@ -1,9 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
-
 import 'dart:async';
-
 import 'package:app/constants/colors.dart';
-
+import 'package:app/dataBases/hive.dart';
 import 'package:app/main.dart';
 import 'package:app/quizzes/addQuestions/saveData.dart';
 import 'package:app/quizzes/getQuizzes.dart';
@@ -13,6 +11,7 @@ import 'package:app/quizzes/result_screen.dart';
 import 'package:app/tts.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class QuizScreen extends StatelessWidget {
   const QuizScreen({super.key, required this.quizName, required this.saveData});
@@ -26,7 +25,7 @@ class QuizScreen extends StatelessWidget {
 
   Future<List<int>> fetchDailyQuizData() async {
     if (quizName != 'Daily Quiz') {
-      return [0,0];
+      return [0, 0];
     } else {
       print('DQ SEEN');
       DateTime now = DateTime.now();
@@ -35,25 +34,21 @@ class QuizScreen extends StatelessWidget {
       int? savedScore = prefs.getInt('score');
       if (questionIndex == null) {
         prefs.clear();
-        return [0,0];
+        return [0, 0];
       } else {
-        if(savedScore != null){
+        if (savedScore != null) {
           return [questionIndex, savedScore];
-        }
-        else{
+        } else {
           return [questionIndex, 0];
         }
-        
       }
     }
   }
 
-  void getQuestionNUm() {}
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: lightGrey,
+      backgroundColor: blueDark,
       body: Center(
         child: FutureBuilder<Quiz>(
           future: fetchQuizData(),
@@ -70,8 +65,33 @@ class QuizScreen extends StatelessWidget {
                     return const CircularProgressIndicator();
                   } else if (snapshot2.hasError) {
                     return const Text('Error loading quiz data');
+                  } else if (snapshot2.data![0] >=
+                      snapshot.data!.questions.length) {
+                    return ResultsScreen(
+                      totalQuestions: snapshot.data!.questions.length,
+                      correctAnswers: snapshot2.data![1],
+                      addToData: true,
+                      data:
+                          Hive.box<ListData>('DailyScoresList').get('Scores') ??
+                              ListData([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]),
+                      goHome: () {
+                        // Restart the quiz
+                        // You can navigate back to the first question or reset the state of the quiz
+                        Navigator.popUntil(context, (route) => false);
+                        //Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const RootPage(), // Replace AnotherScreen with your desired screen
+                          ),
+                        );
+                      },
+                    );
+
+                    //return Container(child: Text("sdadasdas"));
                   } else if (snapshot2.hasData) {
-                    print("number + ${snapshot2.data!}");
+                    print("number  ${snapshot2.data!}");
                     return QuizWidget(
                       quiz: snapshot.data!,
                       isSaved: saveData,
@@ -83,10 +103,6 @@ class QuizScreen extends StatelessWidget {
                   }
                 },
               );
-              // QuizWidget(
-              //   quiz: snapshot.data!,
-              //   isSaved: saveData,
-              // );
             } else {
               return const Text('No quiz data available');
             }
@@ -102,14 +118,19 @@ class QuizWidget extends StatefulWidget {
   final bool isSaved;
   final List<int> startingQuestionAndScore;
   final String quizID;
-  const QuizWidget({super.key, required this.quiz, required this.isSaved, required this.startingQuestionAndScore, required this.quizID});
-   
+  const QuizWidget(
+      {super.key,
+      required this.quiz,
+      required this.isSaved,
+      required this.startingQuestionAndScore,
+      required this.quizID});
+
   @override
   _QuizWidgetState createState() => _QuizWidgetState();
 }
 
 class _QuizWidgetState extends State<QuizWidget> {
-  late int currentQuestionIndex =  widget.startingQuestionAndScore[0];
+  late int currentQuestionIndex = widget.startingQuestionAndScore[0];
   // bool canProceed = false;
   // bool isCorrectlySelected = false;
   // bool showCorrectAnswer = false; // Added variable to control revealing the correct answer
@@ -123,19 +144,18 @@ class _QuizWidgetState extends State<QuizWidget> {
   }
 
   void saveIndexData() async {
-       DateTime now = DateTime.now();
-      final prefs = await SharedPreferences.getInstance();
-      // Add more data if needed
-      prefs.setInt('${now.month}-${now.day}-${now.year}', currentQuestionIndex);
-      prefs.setInt('score', score);
-    
+    DateTime now = DateTime.now();
+    final prefs = await SharedPreferences.getInstance();
+    // Add more data if needed
+    prefs.setInt('${now.month}-${now.day}-${now.year}', currentQuestionIndex);
+    prefs.setInt('score', score);
   }
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    
+
     Question currentQuestion =
         widget.quiz.getQuestionIndex(currentQuestionIndex);
 
@@ -143,9 +163,7 @@ class _QuizWidgetState extends State<QuizWidget> {
       //if user gets at least 80% of the way done, upadte the index
       int levelIndex = await getLevelIndex(qName);
       if (correct >= total * 0.8 && await readLevelIndex() <= levelIndex) {
-       
         writeLevelIndex(await readLevelIndex() + 1);
-
       }
     }
 
@@ -178,7 +196,6 @@ class _QuizWidgetState extends State<QuizWidget> {
       //print(currentQuestion.toNewData());
       updateJsonData(currentQuestion, 'data.json');
 
-      
       //check if we update score or not
       if (updateScore()) {
         score++;
@@ -192,16 +209,30 @@ class _QuizWidgetState extends State<QuizWidget> {
       currentlySelected = -1;
       if (currentQuestionIndex == widget.quiz.questions.length) {
         if (widget.quiz.quizName != "Daily Quiz") {
+          //increase the levelcap for the user
           increaseLevelIndex(
               widget.quiz.questions.length, score, widget.quiz.quizName);
         }
+        if (widget.quizID == "Daily Quiz") {
+          print('HIVEEEEEEEE');
+          final box = Hive.box<ListData>('DailyScoresList');
+          final listData = box.get('Scores');
+          if (listData != null) {
+            listData.integers[score]++;
+            box.put('Scores', listData);
+          }
+        }
+
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
               builder: (context) => ResultsScreen(
                 totalQuestions: widget.quiz.questions.length,
                 correctAnswers: score,
-                onRestartQuiz: () {
+                addToData: widget.isSaved,
+                data: Hive.box<ListData>('DailyScoresList').get('Scores') ??
+                    ListData([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]),
+                goHome: () {
                   // Restart the quiz
                   // You can navigate back to the first question or reset the state of the quiz
                   Navigator.popUntil(context, (route) => false);
