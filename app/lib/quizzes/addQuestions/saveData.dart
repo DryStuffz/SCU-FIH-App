@@ -111,7 +111,7 @@ Future<int> readLevelIndex() async {
     } catch (e) {
       print("Error parsing the string as an integer: $e");
     }
-    return 0;
+    return 1;
   } catch (e) {
     print("Error reading file: $e");
     return Future(() => 1);

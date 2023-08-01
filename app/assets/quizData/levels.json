@@ -74,7 +74,7 @@
       ]
     },
     {
-      "title": "How do you say 'thank you' in English?",
+      "title": "How do you say <lan>'thank you'</lan> in English?",
       "options": [
         {"Help me": false},
         {"Screw you": false},
@@ -83,7 +83,7 @@
       ]
     },
     {
-      "title": "How do you say 'sorry' in English?",
+      "title": "How do you say <lan>'sorry'</lan> in English?",
       "options": [
         {"No thanks": false},
         {"Please": false},
@@ -146,7 +146,7 @@
       ]
     },
     {
-      "title": "How do you say 'please' in English?",
+      "title": "How do you say <lan>'please'</lan> in English?",
       "options": [
         {"Peas": false},
         {"Freeze": false},
@@ -190,8 +190,7 @@
         {"Childish": false}
       ]
     }
-  ]
-  ,
+  ],
   "Communication": [
     {"skillLevel" : 2},
     {

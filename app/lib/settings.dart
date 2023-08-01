@@ -1,5 +1,6 @@
 import 'package:app/constants/test_strings.dart';
 import 'package:app/dataBases/hive.dart';
+import 'package:app/level1.dart';
 import 'package:app/quizzes/addQuestions/addQuestions.dart';
 import 'package:app/quizzes/addQuestions/saveData.dart';
 import 'package:app/quizzes/result_screen.dart';
@@ -139,28 +140,32 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
           ),
           ListTile(
             leading: const Icon(Icons.add),
-            title: const Text('TEST'),
+            title: const Text('ClearPrefData'),
             onTap: () {
               clearData();
             },
           ),
           ListTile(
             leading: const Icon(Icons.help),
-            title: const Text('testing2'),
+            title: const Text('Teest'),
             onTap: () {
-              final box = Hive.box<ListData>('DailyScoresList');
-              // final listData = ListData([0,0,0,0,0,0,0,0,0,0,0]);
-              // box.put('Scores', listData);
-              final listDataz = box.get('Scores');
-                  if (listDataz != null) {
-                    print('Retrieved List of integers from Hive: ${listDataz.integers}');
-                  } else {
-                    print('List of integers not found in Hive.');
-                  }
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => const ResultsData()),
-              //);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Level1()),
+              );
+              // final box = Hive.box<ListData>('DailyScoresList');
+              // // final listData = ListData([0,0,0,0,0,0,0,0,0,0,0]);
+              // // box.put('Scores', listData);
+              // final listDataz = box.get('Scores');
+              //     if (listDataz != null) {
+              //       print('Retrieved List of integers from Hive: ${listDataz.integers}');
+              //     } else {
+              //       print('List of integers not found in Hive.');
+              //     }
+              // // Navigator.push(
+              // //   context,
+              // //   MaterialPageRoute(builder: (context) => const ResultsData()),
+              // //);
             },
           ),
         ],
