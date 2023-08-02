@@ -16,6 +16,7 @@ const String levelIndex = "unlockedLevels.json";
 const int questionsPerLevel = 20;
 
 
+
 const String dailyBoxName = 'DailyScoresList';
 const String boxName = 'daily_streak_box';
 const String keyStreak = 'daily_streak';

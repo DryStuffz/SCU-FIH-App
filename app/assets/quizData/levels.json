@@ -83,7 +83,7 @@
       ]
     },
     {
-      "title": "How do you say <lan>'sorry'</lan> in English?",
+      "title": "How do you say 'sorry' in English?",
       "options": [
         {"No thanks": false},
         {"Please": false},
@@ -146,7 +146,7 @@
       ]
     },
     {
-      "title": "How do you say <lan>'please'</lan> in English?",
+      "title": "How do you say 'please' in English?",
       "options": [
         {"Peas": false},
         {"Freeze": false},

@@ -123,51 +123,51 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
               );
             },
           ),
-          ListTile(
-            leading: const Icon(Icons.add),
-            title: const Text('Remove History'),
-            onTap: () {
-              eraseFileData(completedQuestions);
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.add),
-            title: const Text('Remove LEvelIndex'),
-            onTap: () {
-              eraseFileData(levelIndex);
-              writeLevelIndex(1);
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.add),
-            title: const Text('ClearPrefData'),
-            onTap: () {
-              clearData();
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.help),
-            title: const Text('Teest'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Level1()),
-              );
-              // final box = Hive.box<ListData>('DailyScoresList');
-              // // final listData = ListData([0,0,0,0,0,0,0,0,0,0,0]);
-              // // box.put('Scores', listData);
-              // final listDataz = box.get('Scores');
-              //     if (listDataz != null) {
-              //       print('Retrieved List of integers from Hive: ${listDataz.integers}');
-              //     } else {
-              //       print('List of integers not found in Hive.');
-              //     }
-              // // Navigator.push(
-              // //   context,
-              // //   MaterialPageRoute(builder: (context) => const ResultsData()),
-              // //);
-            },
-          ),
+          // ListTile(
+          //   leading: const Icon(Icons.add),
+          //   title: const Text('Remove History'),
+          //   onTap: () {
+          //     eraseFileData(completedQuestions);
+          //   },
+          // ),
+          // ListTile(
+          //   leading: const Icon(Icons.add),
+          //   title: const Text('Remove LEvelIndex'),
+          //   onTap: () {
+          //     eraseFileData(levelIndex);
+          //     writeLevelIndex(1);
+          //   },
+          // ),
+          // ListTile(
+          //   leading: const Icon(Icons.add),
+          //   title: const Text('ClearPrefData'),
+          //   onTap: () {
+          //     clearData();
+          //   },
+          // ),
+          // ListTile(
+          //   leading: const Icon(Icons.help),
+          //   title: const Text('Teest'),
+          //   onTap: () {
+          //     // Navigator.push(
+          //     //   context,
+          //     //   MaterialPageRoute(builder: (context) => const Level1()),
+          //     // );
+          //     // final box = Hive.box<ListData>('DailyScoresList');
+          //     // // final listData = ListData([0,0,0,0,0,0,0,0,0,0,0]);
+          //     // // box.put('Scores', listData);
+          //     // final listDataz = box.get('Scores');
+          //     //     if (listDataz != null) {
+          //     //       print('Retrieved List of integers from Hive: ${listDataz.integers}');
+          //     //     } else {
+          //     //       print('List of integers not found in Hive.');
+          //     //     }
+          //     // // Navigator.push(
+          //     // //   context,
+          //     // //   MaterialPageRoute(builder: (context) => const ResultsData()),
+          //     // //);
+          //   },
+          // ),
         ],
       ),
     );
