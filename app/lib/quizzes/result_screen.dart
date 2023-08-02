@@ -10,6 +10,9 @@ import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 import 'package:provider/provider.dart';
 import 'package:hive/hive.dart';
 import 'package:app/constants/test_strings.dart';
+import 'package:device_info/device_info.dart';
+
+import 'dart:io' show Platform;
 
 
 class ResultsScreen extends StatelessWidget {
@@ -30,13 +33,24 @@ class ResultsScreen extends StatelessWidget {
   final bool updateStreaks;
   @override
   Widget build(BuildContext context) {
-    return (addToData)
-        ? DailyQuizResults(updateStreaks: updateStreaks,  addedData: correctAnswers, goHome: goHome, resultData: data,numCorect: correctAnswers, totalQuestions: totalQuestions,)
+    try{
+      return (addToData && (Platform.isIOS || Platform.isAndroid) )
+        ?   DailyQuizResults(updateStreaks: updateStreaks,  addedData: correctAnswers, goHome: goHome, resultData: data,numCorect: correctAnswers, totalQuestions: totalQuestions,)
         : LevelResultsScreen(
             correctAnswers: correctAnswers,
             goHome: goHome,
             totalQuestions: totalQuestions,
           );
+    }
+    catch(e){
+      print(e);
+    }
+    return LevelResultsScreen(
+            correctAnswers: correctAnswers,
+            goHome: goHome,
+            totalQuestions: totalQuestions,
+          );
+    
   }
 }
 
@@ -225,6 +239,7 @@ class DailyQuizResults extends StatelessWidget {
     
 
     return  Scaffold(
+
       backgroundColor: blueDark,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -236,7 +251,7 @@ class DailyQuizResults extends StatelessWidget {
               style: TextStyle(
                   fontSize: 30, fontWeight: FontWeight.bold, color: grey),
               textAlign: TextAlign.left),
-          const SizedBox(height: 50),
+          const SizedBox(height: 0),
            Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children:  [
@@ -282,7 +297,7 @@ class DailyQuizResults extends StatelessWidget {
               ]),
             ],
           ),
-          const SizedBox(height: 30,),
+          const SizedBox(height: 0,),
           ResultsData(resultData: resultData, addedData: addedData),
            ElevatedButton(
                   onPressed: goHome,
