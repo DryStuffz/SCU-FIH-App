@@ -39,7 +39,16 @@ class History extends StatelessWidget {
         future: newData,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
+            return Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/background2.jpg"),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            );
+
+            //const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else {
@@ -50,13 +59,19 @@ class History extends StatelessWidget {
 
               return Stack(
                 children: [
+                  Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/background2.jpg"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
                   Column(
                     children: [
-
                       SizedBox(
                         width: double.infinity,
                         child: IconButton(
-                      
                           alignment: Alignment.centerRight,
                           icon: const Icon(Icons.search),
                           onPressed: () async {
@@ -81,6 +96,7 @@ class History extends StatelessWidget {
 
                             return Card(
                               child: ListTile(
+                                tileColor: Colors.white10,
                                 title: Text(cardData['title']),
                                 subtitle: Text(cardData['date']),
                                 onTap: () {
@@ -174,7 +190,14 @@ class History extends StatelessWidget {
               print(e);
             }
 
-            return const Text("NO HISTORY FOUND");
+            return Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/background2.jpg"),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            );
           }
         },
       ),
