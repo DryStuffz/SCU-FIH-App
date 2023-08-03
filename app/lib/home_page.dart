@@ -35,7 +35,16 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             // While the Future is still running, show a loading indicator.
-            return const CircularProgressIndicator();
+            return Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/background2.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+      ); 
+            
+            //const CircularProgressIndicator();
           } else if (snapshot.hasError) {
             // If there was an error while fetching data, show an error message.
             return Text('Error: ${snapshot.error}');

@@ -67,6 +67,7 @@ Future<void> eraseFileData(String name) async {
     if (file.existsSync()) {
       // Erase the file by overwriting it with an empty string
       await file.writeAsString('');
+      
       print("File data erased successfully.");
     } else {
       print("JSON file does not exist.");

@@ -2,48 +2,30 @@
   "Vocab": [
     {"skillLevel" : 1},
     {
-      "title": "What is the correct greeting to use when meeting someone for the first time?",
-      "options": [
-        {"Goodbye": false},
-        {"Thank you": false},
-        {"Hello": true},
-        {"Sorry": false}
-      ]
-    },
-    {
       "title": "Who is the person that gives birth?",
       "options": [
         {"Sister": false},
         {"Father": false},
         {"Mother": true},
-        {"Friend": false}
+        {"Brother": false}
       ]
     },
     {
-      "title": "Choose the correct past tense form of the verb 'to eat':",
+      "title": "Which place do you live in?",
       "options": [
-        {"Eaten": false},
-        {"Eat": false},
-        {"Ate": true},
-        {"Eating": false}
+        {"School": false},
+        {"House": true},
+        {"Garden": false},
+        {"Park": false}
       ]
     },
     {
-      "title": "Choose the correct present tense form of the verb 'to play':",
+      "title": "Fill in the blank: 'The book is ____ the table'",
       "options": [
-        {"Played": false},
-        {"Playing": true},
-        {"Plays": false},
-        {"Play": false}
-      ]
-    },
-    {
-      "title": "What is the correct greeting to use when saying goodbye?",
-      "options": [
-        {"Good morning": false},
-        {"Goodbye": true},
-        {"Thank you": false},
-        {"Hello": false}
+        {"on": true},
+        {"at": false},
+        {"in": false},
+        {"over": false}
       ]
     },
     {
@@ -56,7 +38,16 @@
       ]
     },
     {
-      "title": "What is the opposite of 'hot'?",
+      "title": "Fill in the blank: “I wrote a ____ .”",
+      "options": [
+        {"Book": true},
+        {"Movie": false},
+        {"Video": false},
+        {"Food": false}
+      ]
+    },
+    {
+      "title": "What is the opposite of “hot”?",
       "options": [
         {"Cold": true},
         {"Big": false},
@@ -74,25 +65,7 @@
       ]
     },
     {
-      "title": "How do you say <lan>'thank you'</lan> in English?",
-      "options": [
-        {"Help me": false},
-        {"Screw you": false},
-        {"Sorry": false},
-        {"Thank you": true}
-      ]
-    },
-    {
-      "title": "How do you say 'sorry' in English?",
-      "options": [
-        {"No thanks": false},
-        {"Please": false},
-        {"Sorry": true},
-        {"Thank you": false}
-      ]
-    },
-    {
-      "title": "Fill in the blank: 'I ____ a student.'",
+      "title": "Fill in the blank: “I ____ a student.”",
       "options": [
         {"Am": true},
         {"Is": false},
@@ -102,6 +75,24 @@
     },
     {
       "title": "What color is the sky?",
+      "options": [
+        {"Blue": true},
+        {"Chair": false},
+        {"Run": false},
+        {"Two": false}
+      ]
+    },
+    {
+      "title": "Which word rhymes with “cat”?",
+      "options": [
+        {"Hate": false},
+        {"Dog": false},
+        {"Car": false},
+        {"Bat": true}
+      ]
+    },
+    {
+      "title": "What is the opposite of “happy”?",
       "options": [
         {"Blue": true},
         {"Chair": false},

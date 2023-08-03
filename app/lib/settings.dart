@@ -1,6 +1,8 @@
+import 'package:app/constants/colors.dart';
 import 'package:app/constants/test_strings.dart';
 import 'package:app/dataBases/hive.dart';
 import 'package:app/level1.dart';
+import 'package:app/main.dart';
 import 'package:app/quizzes/addQuestions/addQuestions.dart';
 import 'package:app/quizzes/addQuestions/saveData.dart';
 import 'package:app/quizzes/result_screen.dart';
@@ -17,7 +19,56 @@ class SettingsDrawer extends StatefulWidget {
 }
 
 class _SettingsDrawerState extends State<SettingsDrawer> {
-  
+
+  void _showConfirmationDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Confirmation'),
+          content: const Text('Are you sure you want to perform this action?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context); // Close the dialog
+              },
+              child: const Text('Cancel', style: TextStyle(color: blueGrey)),
+            ),
+            ElevatedButton(
+              style: const ButtonStyle(
+                backgroundColor: MaterialStatePropertyAll<Color>(blueGrey),
+              ),
+              onPressed: () {
+                final dte = DateTime.now().subtract(const Duration(days: 30));
+              eraseFileData(completedQuestions);
+              eraseFileData(levelIndex);
+              writeLevelIndex(1);
+              clearData();
+              Hive.box<ListData>(dailyBoxName).put('Scores',ListData([0,0,0,0,0,0,0,0,0,0,0]));
+              final streaksBox = Hive.box(boxName);
+              streaksBox.put(keyStreak, 0);
+              streaksBox.put(keymaxStreak, 0);
+              streaksBox.put(keyGamesPlayed, 0);
+              streaksBox.put(keyGamesWon, 0);
+              streaksBox.put(keyLastDate, dte);
+                Navigator.popUntil(context, (route) => false);
+                  //Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          const RootPage(), // Replace AnotherScreen with your desired screen
+                    ),
+                  );
+              },
+              child: const Text('Confirm'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -98,19 +149,20 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
             leading: const Icon(Icons.delete),
             title: const Text('Restart All Data'),
             onTap: () {
-              final dte = DateTime.now().subtract(const Duration(days: 30));
-              eraseFileData(completedQuestions);
-              eraseFileData(levelIndex);
-              writeLevelIndex(1);
-              clearData();
-              Hive.box<ListData>(dailyBoxName).put('Scores',ListData([0,0,0,0,0,0,0,0,0,0,0]));
-              final StreaksBox = Hive.box(boxName);
-              StreaksBox.put(keyStreak, 0);
-              StreaksBox.put(keymaxStreak, 0);
-              StreaksBox.put(keyGamesPlayed, 0);
-              StreaksBox.put(keyGamesWon, 0);
-              StreaksBox.put(keyLastDate, dte);
-              print(dte);
+              _showConfirmationDialog(context);
+              // final dte = DateTime.now().subtract(const Duration(days: 30));
+              // eraseFileData(completedQuestions);
+              // eraseFileData(levelIndex);
+              // writeLevelIndex(1);
+              // clearData();
+              // Hive.box<ListData>(dailyBoxName).put('Scores',ListData([0,0,0,0,0,0,0,0,0,0,0]));
+              // final streaksBox = Hive.box(boxName);
+              // streaksBox.put(keyStreak, 0);
+              // streaksBox.put(keymaxStreak, 0);
+              // streaksBox.put(keyGamesPlayed, 0);
+              // streaksBox.put(keyGamesWon, 0);
+              // streaksBox.put(keyLastDate, dte);
+              
             },
           ),
           ListTile(
