@@ -702,24 +702,24 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         ElevatedButton(
-                          onPressed: isEnabled('Idioms')
+                          onPressed: isEnabled('Formal')
                               ? () {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
                                         builder: (BuildContext context) {
                                       return const QuizScreen(
-                                          quizName: "Idioms", saveData: false);
+                                          quizName: "Formal", saveData: false);
                                     }),
                                   );
                                 }
                               : () {
-                                  disabledMessage("Idioms");
+                                  disabledMessage("Formal");
                                 },
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10)),
                             backgroundColor:
-                                isEnabled('Idioms') ? blueDark : grey,
+                                isEnabled('Formal') ? blueDark : grey,
                             minimumSize: Size(0.25 * width, 0.09 * height),
                             maximumSize: Size(0.25 * width, 0.09 * height),
                             shadowColor: const Color.fromARGB(255, 0, 0, 0),
@@ -799,24 +799,24 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         ElevatedButton(
-                          onPressed: isEnabled('Formal')
+                          onPressed: isEnabled('Idioms')
                               ? () {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
                                         builder: (BuildContext context) {
                                       return const QuizScreen(
-                                          quizName: "Formal", saveData: false);
+                                          quizName: "Idioms", saveData: false);
                                     }),
                                   );
                                 }
                               : () {
-                                  disabledMessage("Formal");
+                                  disabledMessage("Idioms");
                                 },
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10)),
                             backgroundColor:
-                                isEnabled('Formal') ? blueDark : grey,
+                                isEnabled('Idioms') ? blueDark : grey,
                             minimumSize: Size(0.25 * width, 0.09 * height),
                             maximumSize: Size(0.25 * width, 0.09 * height),
                             shadowColor: const Color.fromARGB(255, 0, 0, 0),

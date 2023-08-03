@@ -5,326 +5,403 @@
       "title": "What is the correct greeting to use when meeting someone for the first time?",
       "options": [
         {"Goodbye": false},
-        {"Thank you": false},
         {"Hello": true},
-        {"Sorry": false}
-      ]
-    },
-    {
-      "title": "Who is the person that gives birth?",
-      "options": [
-        {"Sister": false},
-        {"Father": false},
-        {"Mother": true},
-        {"Friend": false}
-      ]
-    },
-    {
-      "title": "Choose the correct past tense form of the verb 'to eat':",
-      "options": [
-        {"Eaten": false},
-        {"Eat": false},
-        {"Ate": true},
-        {"Eating": false}
-      ]
-    },
-    {
-      "title": "Choose the correct present tense form of the verb 'to play':",
-      "options": [
-        {"Played": false},
-        {"Playing": true},
-        {"Plays": false},
-        {"Play": false}
-      ]
-    },
-    {
-      "title": "What is the correct greeting to use when saying goodbye?",
-      "options": [
-        {"Good morning": false},
-        {"Goodbye": true},
-        {"Thank you": false},
-        {"Hello": false}
-      ]
-    },
-    {
-      "title": "Which word means a male sibling?",
-      "options": [
-        {"Sister": false},
-        {"Brother": true},
-        {"Mother": false},
-        {"Friend": false}
-      ]
-    },
-    {
-      "title": "What is the opposite of 'hot'?",
-      "options": [
-        {"Cold": true},
-        {"Big": false},
-        {"Fast": false},
-        {"Bright": false}
-      ]
-    },
-    {
-      "title": "What is the opposite of 'big'?",
-      "options": [
-        {"Small": true},
-        {"Tall": false},
-        {"Fast": false},
-        {"Wide": false}
-      ]
-    },
-    {
-      "title": "How do you say <lan>'thank you'</lan> in English?",
-      "options": [
-        {"Help me": false},
-        {"Screw you": false},
         {"Sorry": false},
-        {"Thank you": true}
-      ]
-    },
-    {
-      "title": "How do you say 'sorry' in English?",
-      "options": [
-        {"No thanks": false},
-        {"Please": false},
-        {"Sorry": true},
         {"Thank you": false}
       ]
     },
     {
-      "title": "Fill in the blank: 'I ____ a student.'",
+      "title": "Who is the person that gives birth?",
       "options": [
-        {"Am": true},
-        {"Is": false},
-        {"Are": false},
-        {"Be": false}
+        {"Sister": false},
+        {"Friend": false},
+        {"Father": false},
+        {"Mother": true}
       ]
     },
     {
-      "title": "What color is the sky?",
+      "title": "What is the same as \"easy\"?",
       "options": [
-        {"Blue": true},
-        {"Chair": false},
-        {"Run": false},
-        {"Two": false}
+        {"Difficult": false},
+        {"Simple": true},
+        {"Engaging": false},
+        {"Hard": false}
       ]
     },
     {
-      "title": "Which word rhymes with 'cat'?",
+      "title": "Which word means a small insect that can fly?",
       "options": [
-        {"Hat": true},
+        {"Fish": false},
         {"Dog": false},
-        {"Car": false},
-        {"Bat": false}
+        {"Bird": false},
+        {"Fly": true}
       ]
     },
     {
-      "title": "What is the opposite of 'happy'?",
+      "title": "Which word means a person who flies an airplane?",
       "options": [
-        {"Sad": true},
-        {"Tired": false},
-        {"Angry": false},
-        {"Excited": false}
-      ]
-    },
-    {
-      "title": "What is the opposite of 'cold'?",
-      "options": [
-        {"Hot": true},
-        {"Warm": false},
-        {"Cool": false},
-        {"Frozen": false}
-      ]
-    },
-    {
-      "title": "Which word means 'goodbye'?",
-      "options": [
-        {"Hello": false},
-        {"Bye": true},
-        {"Howdy": false},
-        {"Hey": false}
-      ]
-    },
-    {
-      "title": "How do you say 'please' in English?",
-      "options": [
-        {"Peas": false},
-        {"Freeze": false},
-        {"Appease": false},
-        {"Please": true}
-      ]
-    },
-    {
-      "title": "What color is grass?",
-      "options": [
-        {"Green": true},
-        {"Yellow": false},
-        {"Black": false},
-        {"Blue": false}
-      ]
-    },
-    {
-      "title": "Fill in the blank: 'My mother ____ a nurse.'",
-      "options": [
-        {"is": true},
-        {"am": false},
-        {"are": false},
-        {"be": false}
-      ]
-    },
-    {
-      "title": "Fill in the blank: 'He ____ a cat.'",
-      "options": [
-        {"has": false},
-        {"have": false},
-        {"having": false},
-        {"had": true}
-      ]
-    },
-    {
-      "title": "Fill in the blank: 'My grandparents are ___ than me.'",
-      "options": [
-        {"Older": true},
-        {"Younger": false},
-        {"Newer": false},
-        {"Childish": false}
-      ]
-    }
-  ],
-  "Communication": [
-    {"skillLevel" : 2},
-    {
-      "title": "TESTTINGNGGGGGGGGG",
-      "options": [
-        {"first block": false},
-        {"second Block": false},
-        {"Third Block": false},
-        {"fourth Block": true}
-
-      ]
-    },
-    {
-      "title": "What is 5 + 2",
-      "options": [
-        {"4": false},
-        {"7": true},
-        {"34": false},
-        {"9k": false}
-      ]
-    }
-  ],
-  "Future/Past": [
-    {"skillLevel" : 3},
-    {
-      "title": "What is the correct greeting to use when meeting someone for the first time?",
-      "options": [
-        {"Goodbye": false},
-        {"Thank you": false},
-        {"Hello": true},
-        {"Sorry": false}
+        {"Sailor": false},
+        {"Driver": false},
+        {"Teacher": false},
+        {"Pilot": true}
       ]
     },
     {
       "title": "Who is the person that gives birth?",
       "options": [
         {"Sister": false},
+        {"Friend": false},
         {"Father": false},
-        {"Mother": true},
-        {"Friend": false}
-      ]
-    },
-    {
-      "title": "Choose the correct past tense form of the verb 'to eat':",
-      "options": [
-        {"Eaten": false},
-        {"Eat": false},
-        {"Ate": true},
-        {"Eating": false}
+        {"Mother": true}
       ]
     },
     {
       "title": "Which place do you live in?",
       "options": [
         {"School": false},
-        {"House": true},
         {"Garden": false},
+        {"House": true},
         {"Park": false}
       ]
     },
     {
-      "title": "What is the correct future tense form of the verb 'to go'?",
+      "title": "Fill in the blank: \"The book is ____ the table\"",
       "options": [
-        {"Went": false},
-        {"Going": false},
-        {"Gone": false},
-        {"Will go": true}
+        {"at": false},
+        {"in": false},
+        {"over": false},
+        {"on": true}
       ]
     },
     {
-      "title": "Choose the correct present tense form of the verb 'to play':",
+      "title": "Which word means a male sibling?",
       "options": [
-        {"Played": false},
-        {"Playing": true},
-        {"Plays": false},
-        {"Play": false}
+        {"Sister": false},
+        {"Friend": false},
+        {"Mother": false},
+        {"Brother": true}
       ]
     },
     {
-      "title": "What is the opposite of 'hot'?",
+      "title": "Fill in the blank: “I wrote a ____ .”",
       "options": [
+        {"Food": false},
+        {"Video": false},
+        {"Movie": false},
+        {"Book": true}
+      ]
+    },
+    {
+      "title": "What is the opposite of \"hot\"?",
+      "options": [
+        {"Bright": false},
+        {"Fast": false},
         {"Cold": true},
-        {"Big": false},
-        {"Fast": false},
-        {"Bright": false}
+        {"Big": false}
       ]
     },
     {
-      "title": "What is the opposite of 'big'?",
+      "title": "What is the opposite of \"big\"?",
       "options": [
-        {"Small": true},
         {"Tall": false},
-        {"Fast": false},
-        {"Wide": false}
+        {"Wide": false},
+        {"Small": true},
+        {"Fast": false}
       ]
     },
     {
-      "title": "How do you say 'thank you' in English?",
+      "title": "Fill in the blank: “I ____ a student.”",
       "options": [
-        {"Help me": false},
-        {"Screw you": false},
+        {"are": false},
+        {"is": false},
+        {"be": false},
+        {"am": true}
+      ]
+    },
+    {
+      "title": "What color is the sky?",
+      "options": [
+        {"Purple": false},
+        {"Green": false},
+        {"Red": false},
+        {"Blue": true}
+      ]
+    },
+    {
+      "title": "Which word rhymes with \"cat\"?",
+      "options": [
+        {"Dog": false},
+        {"Hate": false},
+        {"Car": false},
+        {"Bat": true}
+      ]
+    },
+    {
+      "title": "What is the opposite of \"happy\"?",
+      "options": [
+        {"Cool": false},
+        {"Relaxed": false},
+        {"Excited": false},
+        {"Sad": true}
+      ]
+    },
+    {
+      "title": "What is the opposite of \"cold\"?",
+      "options": [
+        {"Cool": false},
+        {"Frozen": false},
+        {"Warm": false},
+        {"Hot": true}
+      ]
+    },
+    {
+      "title": "Choose the correct shape",
+      "options": [
+        {"Dog": false},
+        {"Circle": true},
+        {"Happy": false},
+        {"Three": false}
+      ]
+    },
+    {
+      "title": "Which word rhymes with \"hat\"?",
+      "options": [
+        {"Sun": false},
+        {"Car": false},
+        {"Rat": true},
+        {"Bait": false}
+      ]
+    },
+    {
+      "title": "Fill in the blank: “We ____ to school every day.”",
+      "options": [
+        {"fall": false},
+        {"sleep": false},
+        {"eat": false},
+        {"walk": true}
+      ]
+    },
+    {
+      "title": "Fill in the blank: “They ____ my parents.”",
+      "options": [
+        {"is": false},
+        {"be": false},
+        {"are": true},
+        {"am": false}
+      ]
+    },
+    {
+      "title": "Fill in the blank: “They ____ a car.”",
+      "options": [
+        {"walk": false},
+        {"sleep": false},
+        {"fly": false},
+        {"drive": true}
+      ]
+    },
+    {
+      "title": "What color is grass?",
+      "options": [
+        {"Yellow": false},
+        {"Black": false},
+        {"Blue": false},
+        {"Green": true}
+      ]
+    },
+    {
+      "title": "Fill in the blank: “My mother ____ a nurse.”",
+      "options": [
+        {"am": false},
+        {"are": false},
+        {"be": false},
+        {"is": true}
+      ]
+    },
+    {
+      "title": "Fill in the blank: “He ____ a cat.”",
+      "options": [
+        {"having": false},
+        {"hased": false},
+        {"have": false},
+        {"has": true}
+      ]
+    },
+    {
+      "title": "Fill in the blank: “My grandparents are ____ than me.”",
+      "options": [
+        {"newer": false},
+        {"childish": false},
+        {"younger": false},
+        {"older": true}
+      ]
+    },
+    {
+      "title": "Which word means a small and round fruit?",
+      "options": [
+        {"Potato": false},
+        {"Grape": true},
+        {"Carrot": false},
+        {"Banana": false}
+      ]
+    },
+    {
+      "title": "What do you call a young dog?",
+      "options": [
+        {"Kitten": false},
+        {"Calf": false},
+        {"Fry": false},
+        {"Puppy": true}
+      ]
+    },
+    {
+      "title": "What do you do in water?",
+      "options": [
+        {"Eat": false},
+        {"Run": false},
+        {"Fly": false},
+        {"Swim": true}
+      ]
+    },
+    {
+      "title": "What do you call a building where books are kept and borrowed?",
+      "options": [
+        {"Museum": false},
+        {"Library": true},
+        {"School": false},
+        {"Hospital": false}
+      ]
+    },
+    {
+      "title": "What do you call a building where sick people are treated?",
+      "options": [
+        {"Museum": false},
+        {"Library": false},
+        {"School": false},
+        {"Hospital": true}
+      ]
+    },
+    {
+      "title": "Which is in the correct order?",
+      "options": [
+        {"Evening, Night, Morning, Noon": false},
+        {"Morning, Noon, Night, Evening": false},
+        {"Noon, Night, Evening, Morning": false},
+        {"Morning, Noon, Evening, Night": true}
+      ]
+    }
+  ],
+  "Communication": [
+    {"skillLevel" : 2},
+    {
+      "title": "Fill in the blank: “I am looking forward to ____ you.”",
+      "options": [
+        {"saw": false},
+        {"seen": false},
+        {"seeing": true},
+        {"see": false}
+      ]
+    },
+    {
+      "title": "Fill in the blank: “I have been studying English ____ five years.”",
+      "options": [
+        {"for": true},
+        {"since": false},
+        {"during": false},
+        {"until": false}
+      ]
+    },
+    {
+      "title": "Which sentence is correct?",
+      "options": [
+        {"Which dish I order, you should recommend?": false},
+        {"Which dish do you recommend me order?": false},
+        {"Dish do you recommend me to order?": false},
+        {"Which dish do you recommend I order?": true}
+      ]
+    },
+    {
+      "title": "Which sentence is correct?",
+      "options": [
+        {"I not have any money.": false},
+        {"I haven't any money.": true},
+        {"I doesn't have any money.": false},
+        {"I don't have any money.": false}
+      ]
+    },
+    {
+      "title": "Choose the correct request.",
+      "options": [
+        {"Please give me a pen, can I?": false},
+        {"Can you give me a pen, please?": true},
+        {"Please give me a pen, can you?": false},
+        {"Give me please a pen, can you?": false}
+      ]
+    },
+    {
+      "title": "Choose the correct request.",
+      "options": [
+        {"Help me, please you can?": false},
+        {"You can help me, please?": false},
+        {"Can me help you, please?": false},
+        {"Can you help me, please?": true}
+      ]
+    },
+    {
+      "title": "Choose the correct request.",
+      "options": [
+        {"I can have a glass of water, please?": false},
+        {"Have I can a glass of water, please?": false},
+        {"Can have I a glass of water, please?": false},
+        {"Can I have a glass of water, please?": true}
+      ]
+    },
+    {
+      "title": "How do you say please in English?",
+      "options": [
+        {"Freeze": false},
+        {"Appease": false},
+        {"Peas": false},
+        {"Please": true}
+      ]
+    },
+    {
+      "title": "What is the correct greeting to use when saying bye?",
+      "options": [
+        {"Good morning": false},
+        {"Hello": false},
+        {"Thank you": false},
+        {"Goodbye": true}
+      ]
+    },
+    {
+      "title": "How do you say thank you in English?",
+      "options": [
         {"Sorry": false},
+        {"Screw you": false},
+        {"Help me": false},
         {"Thank you": true}
       ]
     },
     {
-      "title": "Which word rhymes with 'cat'?",
+      "title": "How do you say sorry in English?",
       "options": [
-        {"Hat": true},
-        {"Dog": false},
-        {"Car": false},
-        {"Bat": false}
+        {"Please": false},
+        {"No thanks": false},
+        {"Sorry": true},
+        {"Thank you": false}
       ]
     },
     {
-      "title": "What is the opposite of 'happy'?",
+      "title": "What is the correct greeting to use when meeting someone for the first time?",
       "options": [
-        {"Sad": true},
-        {"Tired": false},
-        {"Angry": false},
-        {"Excited": false}
+        {"Goodbye": false},
+        {"Hello": true},
+        {"Thank you": false},
+        {"Sorry": false}
       ]
     },
     {
-      "title": "What is the opposite of 'cold'?",
-      "options": [
-        {"Hot": true},
-        {"Warm": false},
-        {"Cool": false},
-        {"Frozen": false}
-      ]
-    },
-    {
-      "title": "Which word means 'goodbye'?",
+      "title": "Which word means goodbye?",
       "options": [
         {"Hello": false},
         {"Bye": true},
@@ -333,23 +410,323 @@
       ]
     },
     {
-      "title": "How do you say 'please' in English?",
+      "title": "Which pronoun should be used to refer to a group of people?",
       "options": [
-        {"Peas": false},
-        {"Freeze": false},
-        {"Appease": false},
-        {"Please": true}
+        {"He": false},
+        {"She": false},
+        {"It": false},
+        {"They": true}
       ]
     },
     {
-      "title": "Choose the correct shape:",
+      "title": "Fill in the blank: \"I'm going ____ the park\"",
       "options": [
-        {"Circle": true},
-        {"Dog": false},
-        {"Happy": false},
-        {"Three": false}
+        {"on": false},
+        {"in": false},
+        {"to": true},
+        {"at": false}
+      ]
+    },
+    {
+      "title": "Which pronoun should be used to refer to a singular non-gendered noun?",
+      "options": [
+        {"He": false},
+        {"She": false},
+        {"It": true},
+        {"They": false}
+      ]
+    },
+    {
+      "title": "Fill in the blank: “_____ is my brother.”",
+      "options": [
+        {"He": true},
+        {"Him": false},
+        {"She": false},
+        {"Her": false}
+      ]
+    },
+    {
+      "title": "Fill in the blank: “_____ is my sister.”",
+      "options": [
+        {"She": true},
+        {"Her": false},
+        {"He": false},
+        {"Him": false}
+      ]
+    },
+    {
+      "title": "Fill in the blank: “We are going ____ the park.”",
+      "options": [
+        {"at": false},
+        {"on": false},
+        {"into": false},
+        {"to": true}
+      ]
+    },
+    {
+      "title": "Which sentence is correct?",
+      "options": [
+        {"We have a car big yellow.": false},
+        {"We have a yellow big car.": false},
+        {"We have a car yellow big.": false},
+        {"We have a big yellow car.": true}
+      ]
+    },
+    {
+      "title": "Which sentence is correct?",
+      "options": [
+        {"She having a red dress.": false},
+        {"She has a red dress.": true},
+        {"She have a red dress.": false},
+        {"She haves a red dress.": false}
+      ]
+    },
+    {
+      "title": "What is the opposite of \"fast\"?",
+      "options": [
+        {"quick": true},
+        {"Rapid": false},
+        {"Slow": false},
+        {"Swift": false}
+      ]
+    },
+    {
+      "title": "Fill in the blank: “I am going ____ school”.",
+      "options": [
+        {"at": false},
+        {"on": false},
+        {"into": false},
+        {"to": true}
+      ]
+    },
+    {
+      "title": "Fill in the blank: “The food is ____ the table.”",
+      "options": [
+        {"on": true},
+        {"under": false},
+        {"outside": false},
+        {"inside": false}
+      ]
+    },
+    {
+      "title": "Which sentence is correct?",
+      "options": [
+        {"They am going to the park.": false},
+        {"They be going to the park.": false},
+        {"They is going to the park.": false},
+        {"They are going to the park.": true}
+      ]
+    },
+    {
+      "title": "Fill in the blank: “I ____ to school every day.”",
+      "options": [
+        {"going": false},
+        {"goes": false},
+        {"go": true},
+        {"gone": false}
       ]
     }
+  ],
+  "Future/Past": [
+    {"skillLevel" : 3},
+    {
+      "title": "Choose the correct past tense form of the verb \"sing\":",
+      "options": [
+        {"Sanged": false},
+        {"Sings": false},
+        {"Singed": false},
+        {"Sang": true}
+      ]
+    },
+    {
+      "title": "Choose the sentence in future tense:",
+      "options": [
+        {"She read the book yesterday.": false},
+        {"She is reading a book.": false},
+        {"She can’t read the book.": false},
+        {"She will read the book tomorrow.": true}
+      ]
+    },
+    {
+      "title": "What is the past tense of the verb \"eat\":",
+      "options": [
+        {"Aten": false},
+        {"Will eat": false},
+        {"Ate": true},
+        {"Eating": false}
+      ]
+    },
+    {
+      "title": "Which sentence is in the past tense?",
+      "options": [
+        {"I write a letter yesterday.": false},
+        {"I wrote a letter.": true},
+        {"I am writing a letter.": false},
+        {"I writing a letter.": false}
+      ]
+    },
+    {
+      "title": "What is the future tense of the verb \"eat\":",
+      "options": [
+        {"Will ate": false},
+        {"Eated": false},
+        {"Will eat": true},
+        {"Eaten": false}
+      ]
+    },
+    {
+      "title": "What is the present tense of the verb \"play\":",
+      "options": [
+        {"Played": false},
+        {"Playing": true},
+        {"Plays": false},
+        {"Play": false}
+      ]
+    },
+    {
+      "title": "What is the future tense of the verb \"see\":",
+      "options": [
+        {"Will saw": false},
+        {"Seeing": false},
+        {"Seen": false},
+        {"Will see": true}
+      ]
+    },
+    {
+      "title": "What is the past tense of the verb \"see\":",
+      "options": [
+        {"Saed": false},
+        {"Seen": true},
+        {"Saw": false},
+        {"See": false}
+      ]
+    },
+    {
+      "title": "What is the future tense of the verb \"go\":",
+      "options": [
+        {"Went": false},
+        {"Will going": false},
+        {"Gone": false},
+        {"Will go": true}
+      ]
+    },
+    {
+      "title": "What is the past tense of the verb \"go\":",
+      "options": [
+        {"Goed": false},
+        {"Gone": true},
+        {"Went": false},
+        {"Will go": false}
+      ]
+    },
+    {
+      "title": "Which sentence uses the future tense correctly?",
+      "options": [
+        {"I go to the store later.": false},
+        {"I am going to the store later.": false},
+        {"I will going to the store later.": false},
+        {"I will go to the store later.": true}
+      ]
+    },
+    {
+      "title": "Select the correct sentence.",
+      "options": [
+        {"Yesterday my friend to the party went.": false},
+        {"My friend to the party yesterday went.": false},
+        {"We to the movie went last night.": false},
+        {"My friend went to the party yesterday.": true}
+      ]
+    },
+    {
+      "title": "Which sentence uses the future tense correctly?",
+      "options": [
+        {"They go to the park yesterday.": false},
+        {"They are going to the park now.": false},
+        {"They will went to the park later.": false},
+        {"They will goes to the park tomorrow.": false}
+      ]
+    },
+    {
+      "title": "Select the correct sentence.",
+      "options": [
+        {"Last night to the movie we went.": false},
+        {"To the movie last night we went.": true},
+        {"We went to the movie last night.": false},
+        {"We to the movie went last night.": false}
+      ]
+    },
+    {
+      "title": "Fill in the blank: “He ___ his homework yesterday.”",
+      "options": [
+        {"finish": false},
+        {"finishes": false},
+        {"finished": true},
+        {"finishing": false}
+      ]
+    },
+    {
+      "title": "Fill in the blank: “I ______ a book yesterday.”",
+      "options": [
+        {"reads": false},
+        {"reading": false},
+        {"read": true},
+        {"am reading": false}
+      ]
+    },
+    {
+      "title": "Fill in the blank: “I ______ watching TV when the phone rang.”",
+      "options": [
+        {"am": false},
+        {"was": true},
+        {"will be": false},
+        {"have been": false}
+      ]
+    },
+    {
+      "title": "What is the past tense of \"run\"?",
+      "options": [
+        {"Runned": false},
+        {"Ran": true},
+        {"Running": false},
+        {"Ranned": false}
+      ]
+    },
+    {
+      "title": "Which sentence is correct?",
+      "options": [
+        {"She is hardly working.": true},
+        {"She hardly is working.": false},
+        {"She is working hardly.": false},
+        {"She working is hardly.": false}
+      ]
+    },
+    {
+      "title": "Fill in the blank: “She _______ her chores tomorrow.”",
+      "options": [
+        {"will finish": true},
+        {"finishes": false},
+        {"will finished": false},
+        {"finishing": false}
+      ]
+    },
+    {
+      "title": "What is the past form of \"drink\"?",
+      "options": [
+        {"Drank": true},
+        {"Drinked": false},
+        {"Drinken": false},
+        {"Dranken": false}
+      ]
+    },
+    {
+      "title": "Fill in the blank: “I look forward to ______ you.”",
+      "options": [
+        {"meet": false},
+        {"met": false},
+        {"meeting": true},
+        {"meeted": false}
+      ]
+    }    
   ],
   "Comparative": [
     {"skillLevel" : 4},
@@ -627,7 +1004,7 @@
       ]
     }
   ],
-  "Idioms": [
+  "Formal": [
     {"skillLevel" : 6},
     {
       "title": "What is the correct greeting to use when meeting someone for the first time?",
@@ -765,7 +1142,7 @@
       ]
     }
   ],
-  "Formal": [
+  "Idioms": [
     {"skillLevel" : 7},
     {
       "title": "What is the correct greeting to use when meeting someone for the first time?",
