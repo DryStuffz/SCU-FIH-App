@@ -85,6 +85,7 @@ class _HomePageState extends State<HomePage> {
     double width =
         MediaQuery.of(context).size.width; //get the width of the screen
     getLevelIndexMap();
+    print(widget.levelProgress);
     bool isEnabled(String qName) {
       if ((widget.levelProgress >= widget.LevelIndexValues[qName]!)) {
         return true;
