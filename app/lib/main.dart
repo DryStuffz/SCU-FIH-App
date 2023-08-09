@@ -10,6 +10,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'firebase_options.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:app/history/historyScreen.dart';
 
 void main() async {
   
@@ -49,7 +50,7 @@ class _RootPageState extends State<RootPage> {
   int indexpage = 0;
   List<Widget> indexPageOptions = <Widget>[
     MyHomePage(),
-    const Level1(),
+    History(),
   ];
 
   void tappedPage(int index) {

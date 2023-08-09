@@ -67,6 +67,7 @@ Future<void> eraseFileData(String name) async {
     if (file.existsSync()) {
       // Erase the file by overwriting it with an empty string
       await file.writeAsString('');
+      
       print("File data erased successfully.");
     } else {
       print("JSON file does not exist.");
@@ -111,7 +112,7 @@ Future<int> readLevelIndex() async {
     } catch (e) {
       print("Error parsing the string as an integer: $e");
     }
-    return 0;
+    return 1;
   } catch (e) {
     print("Error reading file: $e");
     return Future(() => 1);

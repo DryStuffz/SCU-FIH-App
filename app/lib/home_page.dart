@@ -35,7 +35,16 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             // While the Future is still running, show a loading indicator.
-            return const CircularProgressIndicator();
+            return Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/background2.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+      ); 
+            
+            //const CircularProgressIndicator();
           } else if (snapshot.hasError) {
             // If there was an error while fetching data, show an error message.
             return Text('Error: ${snapshot.error}');
@@ -703,24 +712,24 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         ElevatedButton(
-                          onPressed: isEnabled('Idioms')
+                          onPressed: isEnabled('Formal')
                               ? () {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
                                         builder: (BuildContext context) {
                                       return const QuizScreen(
-                                          quizName: "Idioms", saveData: false);
+                                          quizName: "Formal", saveData: false);
                                     }),
                                   );
                                 }
                               : () {
-                                  disabledMessage("Idioms");
+                                  disabledMessage("Formal");
                                 },
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10)),
                             backgroundColor:
-                                isEnabled('Idioms') ? blueDark : grey,
+                                isEnabled('Formal') ? blueDark : grey,
                             minimumSize: Size(0.25 * width, 0.09 * height),
                             maximumSize: Size(0.25 * width, 0.09 * height),
                             shadowColor: const Color.fromARGB(255, 0, 0, 0),
@@ -800,24 +809,24 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         ElevatedButton(
-                          onPressed: isEnabled('Formal')
+                          onPressed: isEnabled('Idioms')
                               ? () {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
                                         builder: (BuildContext context) {
                                       return const QuizScreen(
-                                          quizName: "Formal", saveData: false);
+                                          quizName: "Idioms", saveData: false);
                                     }),
                                   );
                                 }
                               : () {
-                                  disabledMessage("Formal");
+                                  disabledMessage("Idioms");
                                 },
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10)),
                             backgroundColor:
-                                isEnabled('Formal') ? blueDark : grey,
+                                isEnabled('Idioms') ? blueDark : grey,
                             minimumSize: Size(0.25 * width, 0.09 * height),
                             maximumSize: Size(0.25 * width, 0.09 * height),
                             shadowColor: const Color.fromARGB(255, 0, 0, 0),

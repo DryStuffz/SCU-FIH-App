@@ -198,7 +198,7 @@ class _QuizWidgetState extends State<QuizWidget> {
       //print(readJsonData(completedQuestions));
 
       //print(currentQuestion.toNewData());
-      updateJsonData(currentQuestion, 'data.json');
+      //updateJsonData(currentQuestion, 'data.json');
 
       //check if we update score or not
       if (updateScore()) {
@@ -206,7 +206,7 @@ class _QuizWidgetState extends State<QuizWidget> {
       }
       if (widget.isSaved) {
         saveIndexData();
-        //updateJsonData(currentQuestion, 'data.json');
+        updateJsonData(currentQuestion, 'data.json');
       }
       isFinished = false;
       currentQuestionIndex++;

@@ -1,5 +1,8 @@
+import 'package:app/constants/colors.dart';
 import 'package:app/constants/test_strings.dart';
 import 'package:app/dataBases/hive.dart';
+import 'package:app/level1.dart';
+import 'package:app/main.dart';
 import 'package:app/quizzes/addQuestions/addQuestions.dart';
 import 'package:app/quizzes/addQuestions/saveData.dart';
 import 'package:app/quizzes/result_screen.dart';
@@ -16,7 +19,56 @@ class SettingsDrawer extends StatefulWidget {
 }
 
 class _SettingsDrawerState extends State<SettingsDrawer> {
-  
+
+  void _showConfirmationDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Confirmation'),
+          content: const Text('Are you sure you want to perform this action?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context); // Close the dialog
+              },
+              child: const Text('Cancel', style: TextStyle(color: blueGrey)),
+            ),
+            ElevatedButton(
+              style: const ButtonStyle(
+                backgroundColor: MaterialStatePropertyAll<Color>(blueGrey),
+              ),
+              onPressed: () {
+                final dte = DateTime.now().subtract(const Duration(days: 30));
+              eraseFileData(completedQuestions);
+              eraseFileData(levelIndex);
+              writeLevelIndex(1);
+              clearData();
+              Hive.box<ListData>(dailyBoxName).put('Scores',ListData([0,0,0,0,0,0,0,0,0,0,0]));
+              final streaksBox = Hive.box(boxName);
+              streaksBox.put(keyStreak, 0);
+              streaksBox.put(keymaxStreak, 0);
+              streaksBox.put(keyGamesPlayed, 0);
+              streaksBox.put(keyGamesWon, 0);
+              streaksBox.put(keyLastDate, dte);
+                Navigator.popUntil(context, (route) => false);
+                  //Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          const RootPage(), // Replace AnotherScreen with your desired screen
+                    ),
+                  );
+              },
+              child: const Text('Confirm'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -97,19 +149,20 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
             leading: const Icon(Icons.delete),
             title: const Text('Restart All Data'),
             onTap: () {
-              final dte = DateTime.now().subtract(const Duration(days: 30));
-              eraseFileData(completedQuestions);
-              eraseFileData(levelIndex);
-              writeLevelIndex(1);
-              clearData();
-              Hive.box<ListData>(dailyBoxName).put('Scores',ListData([0,0,0,0,0,0,0,0,0,0,0]));
-              final StreaksBox = Hive.box(boxName);
-              StreaksBox.put(keyStreak, 0);
-              StreaksBox.put(keymaxStreak, 0);
-              StreaksBox.put(keyGamesPlayed, 0);
-              StreaksBox.put(keyGamesWon, 0);
-              StreaksBox.put(keyLastDate, dte);
-              print(dte);
+              _showConfirmationDialog(context);
+              // final dte = DateTime.now().subtract(const Duration(days: 30));
+              // eraseFileData(completedQuestions);
+              // eraseFileData(levelIndex);
+              // writeLevelIndex(1);
+              // clearData();
+              // Hive.box<ListData>(dailyBoxName).put('Scores',ListData([0,0,0,0,0,0,0,0,0,0,0]));
+              // final streaksBox = Hive.box(boxName);
+              // streaksBox.put(keyStreak, 0);
+              // streaksBox.put(keymaxStreak, 0);
+              // streaksBox.put(keyGamesPlayed, 0);
+              // streaksBox.put(keyGamesWon, 0);
+              // streaksBox.put(keyLastDate, dte);
+              
             },
           ),
           ListTile(
@@ -122,47 +175,51 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
               );
             },
           ),
-          ListTile(
-            leading: const Icon(Icons.add),
-            title: const Text('Remove History'),
-            onTap: () {
-              eraseFileData(completedQuestions);
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.add),
-            title: const Text('Remove LEvelIndex'),
-            onTap: () {
-              eraseFileData(levelIndex);
-              writeLevelIndex(1);
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.add),
-            title: const Text('TEST'),
-            onTap: () {
-              clearData();
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.help),
-            title: const Text('testing2'),
-            onTap: () {
-              final box = Hive.box<ListData>('DailyScoresList');
-              // final listData = ListData([0,0,0,0,0,0,0,0,0,0,0]);
-              // box.put('Scores', listData);
-              final listDataz = box.get('Scores');
-                  if (listDataz != null) {
-                    print('Retrieved List of integers from Hive: ${listDataz.integers}');
-                  } else {
-                    print('List of integers not found in Hive.');
-                  }
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => const ResultsData()),
-              //);
-            },
-          ),
+          // ListTile(
+          //   leading: const Icon(Icons.add),
+          //   title: const Text('Remove History'),
+          //   onTap: () {
+          //     eraseFileData(completedQuestions);
+          //   },
+          // ),
+          // ListTile(
+          //   leading: const Icon(Icons.add),
+          //   title: const Text('Remove LEvelIndex'),
+          //   onTap: () {
+          //     eraseFileData(levelIndex);
+          //     writeLevelIndex(1);
+          //   },
+          // ),
+          // ListTile(
+          //   leading: const Icon(Icons.add),
+          //   title: const Text('ClearPrefData'),
+          //   onTap: () {
+          //     clearData();
+          //   },
+          // ),
+          // ListTile(
+          //   leading: const Icon(Icons.help),
+          //   title: const Text('Teest'),
+          //   onTap: () {
+          //     // Navigator.push(
+          //     //   context,
+          //     //   MaterialPageRoute(builder: (context) => const Level1()),
+          //     // );
+          //     // final box = Hive.box<ListData>('DailyScoresList');
+          //     // // final listData = ListData([0,0,0,0,0,0,0,0,0,0,0]);
+          //     // // box.put('Scores', listData);
+          //     // final listDataz = box.get('Scores');
+          //     //     if (listDataz != null) {
+          //     //       print('Retrieved List of integers from Hive: ${listDataz.integers}');
+          //     //     } else {
+          //     //       print('List of integers not found in Hive.');
+          //     //     }
+          //     // // Navigator.push(
+          //     // //   context,
+          //     // //   MaterialPageRoute(builder: (context) => const ResultsData()),
+          //     // //);
+          //   },
+          // ),
         ],
       ),
     );

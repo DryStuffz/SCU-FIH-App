@@ -1,43 +1,36 @@
 import 'dart:convert';
+import 'package:app/constants/colors.dart';
+import 'package:app/history/flashCards.dart';
 import 'package:app/quizzes/addQuestions/saveData.dart';
+import 'package:app/quizzes/getQuizzes.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 
+List<String> getOptions(List<dynamic> items, int index) {
+  List<String> options = [];
+  for (int i = 0; i < items[index]['options'].length; i++) {
+    for (var entry in items[index]['options'][i].entries) {
+      options.add(entry.key.toString());
+    }
+  }
+  return options;
+}
+
+String getCorrectAnswer(List<dynamic> items, int index) {
+  String correctAns = "";
+  for (int i = 0; i < items[index]['options'].length; i++) {
+    for (var entry in items[index]['options'][i].entries) {
+      if (entry.value == true) {
+        correctAns = entry.key.toString();
+      }
+    }
+  }
+  return correctAns;
+}
+
 class History extends StatelessWidget {
   final newData = getCompletedJsonHistory();
-
-  // Future<Map<String, dynamic>>.delayed(Duration(seconds: 1), () {
-  //   // Simulating loading data asynchronously
-  //   return {
-  //     "completed": [
-  //       {
-  //         "title": "What is the correct greeting to use when meeting someone for the first time?",
-  //         "date": "7-19-2023",
-  //         "options": [
-  //           {"Goodbye": false},
-  //           {"Thank you": false},
-  //           {"Hello": true},
-  //           {"Sorry": false}
-  //         ]
-  //       },
-  //       // More completed items...
-  //     ],
-  //     "incompleted": [
-  //       {
-  //         "title": "Which word means a male sibling?",
-  //         "date": "7-19-2023",
-  //         "options": [
-  //           {"Sister": false},
-  //           {"Brother": true},
-  //           {"Mother": false},
-  //           {"Friend": false}
-  //         ]
-  //       },
-  //       // More incompleted items...
-  //     ]
-  //   };
-  // });
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +39,16 @@ class History extends StatelessWidget {
         future: newData,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
+            return Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/background2.jpg"),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            );
+
+            //const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else {
@@ -54,40 +56,132 @@ class History extends StatelessWidget {
             try {
               List<dynamic> itemsToShow = data["completed"];
               print(itemsToShow);
-              return Column(
+
+              return Stack(
                 children: [
-                  IconButton(
-                    icon: const Icon(Icons.search),
-                    onPressed: () async {
-                      final selected = await showSearch(
-                        context: context,
-                        delegate: SearchHistoryDelegate(itemsToShow),
-                      );
-                      if (selected != null) {
-                        // Handle the selected item, if needed.
-                      }
-                    },
+                  Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/background2.jpg"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
-                  Expanded(
-                    child: ListView.builder(
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      itemCount: itemsToShow.length,
-                      itemBuilder: (context, index) {
-                        // Access the data for each card
-                        var cardData = itemsToShow[index];
-                        return Card(
-                          child: ListTile(
-                            title: Text(cardData['title']),
-                            subtitle: Text(cardData['date']),
-                            onTap: () {
-                              showOptionsAlertDialog(
-                                  context, cardData['options']);
-                            },
-                            // Add other card content as needed...
+                  Column(
+                    children: [
+                      SizedBox(
+                        width: double.infinity,
+                        child: IconButton(
+                          alignment: Alignment.centerRight,
+                          icon: const Icon(Icons.search),
+                          onPressed: () async {
+                            final selected = await showSearch(
+                              context: context,
+                              delegate: SearchHistoryDelegate(itemsToShow),
+                            );
+                            if (selected != null) {
+                              // Handle the selected item, if needed.
+                            }
+                          },
+                        ),
+                      ),
+                      Expanded(
+                        child: ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          itemCount: itemsToShow.length,
+                          itemBuilder: (context, index) {
+                            // Access the data for each card
+                            var cardData = itemsToShow[index];
+
+                            return Card(
+                              child: ListTile(
+                                tileColor: Colors.white10,
+                                title: Text(cardData['title']),
+                                subtitle: Text(cardData['date']),
+                                onTap: () {
+                                  //getting the correct cardData
+                                  List<String> options =
+                                      getOptions(itemsToShow, index);
+                                  String correctAns =
+                                      getCorrectAnswer(itemsToShow, index);
+                                  // print(cardData['options']);
+                                  // for (int i = 0;i < cardData['options'].length;i++) {
+                                  //   for (var entry in cardData['options'][i].entries) {
+                                  //     options.add(entry.key.toString());
+                                  //     if (entry.value == true) {
+                                  //       correctAns = entry.key.toString();
+                                  //     }
+                                  //   }
+                                  // }
+
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          FlashcardApp(correctAnswers: [
+                                        correctAns
+                                      ], optionsList: [
+                                        options
+                                      ], titles: [
+                                        cardData['title'].toString()
+                                      ]), // Replace AnotherScreen with your desired screen
+                                    ),
+                                  );
+                                  //print(cardData);
+
+                                  //showOptionsAlertDialog(
+                                  //  context, cardData['options']);
+                                },
+                                // Add other card content as needed...
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  Positioned(
+                    bottom: 16.0,
+                    right: 16.0,
+                    child: FloatingActionButton(
+                      onPressed: () {
+                        List<dynamic> completedQuestions =
+                            generateRandomSublist(
+                                itemsToShow, itemsToShow.length);
+                        // Add your action here
+                        List<String> questions = [];
+                        List<String> correctAnswers = [];
+                        List<List<String>> optionsList = [];
+
+                        for (int i = 0; i < completedQuestions.length; i++) {
+                          questions.add(completedQuestions[i]["title"]);
+                          correctAnswers
+                              .add(getCorrectAnswer(completedQuestions, i));
+                          optionsList.add(getOptions(completedQuestions, i));
+                        }
+                        print(completedQuestions);
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => FlashcardApp(
+                                correctAnswers: correctAnswers,
+                                optionsList: optionsList,
+                                titles:
+                                    questions), // Replace AnotherScreen with your desired screen
                           ),
                         );
                       },
+
+                      backgroundColor:
+                          blueDark, // Background color of the button
+                      foregroundColor: grey, // Color of the icon
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(8.0), // Rounded corners
+                      ),
+                      child: Text("Review"),
                     ),
                   ),
                 ],
@@ -95,11 +189,15 @@ class History extends StatelessWidget {
             } catch (e) {
               print(e);
             }
-            //   finally{
-            //     // ignore: control_flow_in_finally
-            //     return const Text('NO HISTORY');
-            //   }
-            return Text("NO HISTORY FOUND");
+
+            return Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/background2.jpg"),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            );
           }
         },
       ),
@@ -112,7 +210,7 @@ class History extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Options'),
+          title: const Text('Options'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: options.map((option) {
@@ -132,7 +230,6 @@ class History extends StatelessWidget {
     );
   }
 }
-// Rest of the code...
 
 class SearchHistoryDelegate extends SearchDelegate<dynamic> {
   final List<dynamic> searchList;
@@ -175,8 +272,20 @@ class SearchHistoryDelegate extends SearchDelegate<dynamic> {
         var cardData = results[index];
         return InkWell(
           onTap: () {
-            // Handle the selected item, if needed.
-            //close(context, cardData);
+            List<String> options = getOptions(searchList, index);
+            String correctAns = getCorrectAnswer(searchList, index);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => FlashcardApp(correctAnswers: [
+                  correctAns
+                ], optionsList: [
+                  options
+                ], titles: [
+                  cardData['title'].toString()
+                ]), // Replace AnotherScreen with your desired screen
+              ),
+            );
           },
           child: Card(
             child: ListTile(
@@ -204,8 +313,20 @@ class SearchHistoryDelegate extends SearchDelegate<dynamic> {
         var cardData = results[index];
         return InkWell(
           onTap: () {
-            // Handle the selected item, if needed.
-            //close(context, cardData);
+            List<String> options = getOptions(searchList, index);
+            String correctAns = getCorrectAnswer(searchList, index);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => FlashcardApp(correctAnswers: [
+                  correctAns
+                ], optionsList: [
+                  options
+                ], titles: [
+                  cardData['title'].toString()
+                ]), // Replace AnotherScreen with your desired screen
+              ),
+            );
           },
           child: ListTile(
             title: Text(cardData['title']),

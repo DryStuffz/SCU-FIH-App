@@ -70,7 +70,11 @@ List<T> generateRandomSublist<T>(List<T> originalList, int sublistLength) {
   if (originalList.length <= sublistLength) {
     // If the original list is smaller than or equal to the requested sublist length,
     // return the original list as the sublist.
-    return originalList;
+    List<T> copiedList = List.from(originalList);
+
+  // Shuffle the copied list to randomize the order.
+    copiedList.shuffle();
+    return copiedList;
   }
 
   // Create a copy of the original list to avoid modifying the original list.
